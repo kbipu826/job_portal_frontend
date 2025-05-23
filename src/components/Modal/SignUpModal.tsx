@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast';
 import { registerSchema } from '@/schemas/auth';
 import { USER_TYPE_ID } from '@/lib/constants';
 import { useRegister } from '@/hooks/auth/auth';
+import { signIn } from 'next-auth/react';
 
 interface SignUpModalProps {
   isOpen: boolean;
@@ -13,7 +14,7 @@ interface SignUpModalProps {
   onSwitchToLogin: () => void;
 }
 
-const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose, activeTab=1, onTabChange, onSwitchToLogin }) => {
+const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose, activeTab=String(USER_TYPE_ID.CANDIDATE), onTabChange, onSwitchToLogin }) => {
   const { mutate: register, isLoading } = useRegister();
   const [formData, setFormData] = useState({
     username: '',
@@ -33,7 +34,6 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose, activeTab=1,
       toast.error('You must agree to the terms and conditions');
       return;
     }
-    
     try {
       const validatedData = registerSchema.parse({
         ...formData,
@@ -41,10 +41,29 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose, activeTab=1,
       });
 
       register(validatedData, {
-        onSuccess: () => {
+        onSuccess: async () => {
           toast.success('Registered successfully');
           onClose();
-          onSwitchToLogin();
+          
+          // Login after successful registration
+          const loginResult = await signIn('credentials', {
+            login: formData.email,
+            password: formData.password,
+            user_type_id: formData.user_type_id,
+            redirect: false
+          });
+
+          if (loginResult?.error) {
+            toast.error(loginResult.error);
+          } else {
+            toast.success('Logged in successfully');
+            // Redirect based on user type
+            if (formData.user_type_id === String(USER_TYPE_ID.CANDIDATE)) {
+              window.location.href = '/dashboard';
+            } else if (formData.user_type_id === String(USER_TYPE_ID.EMPLOYER)) {
+              window.location.href = '/employee-dashboard';
+            }
+          }
         },
         onError: (error: any) => {
           if (error?.errors?.length > 0) {

@@ -13,12 +13,12 @@ interface LoginModalProps {
   onSwitchToSignUp: () => void;
 }
 
-const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, activeTab=1, onTabChange, onSwitchToSignUp }) => {
+const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, activeTab, onTabChange, onSwitchToSignUp }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     login: '',
     password: '',
-    user_type_id: activeTab
+    user_type_id: String(USER_TYPE_ID.CANDIDATE) // Set default to CANDIDATE
   });
 
   if (!isOpen) return null;
@@ -40,6 +40,12 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, activeTab=1, o
       } else {
         toast.success('Logged in successfully');
         onClose();
+        // Redirect based on user type
+        if (formData.user_type_id === String(USER_TYPE_ID.CANDIDATE)) {
+          window.location.href = '/dashboard';
+        } else if (formData.user_type_id === String(USER_TYPE_ID.EMPLOYER)) {
+          window.location.href = '/employee-dashboard';
+        }
       }
     } catch (error: any) {
       if (error?.errors?.length > 0) {
@@ -82,18 +88,18 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, activeTab=1, o
               <div className="twm-tabs-style-2">
                 <ul className="nav nav-tabs" id="myTab2" role="tablist">
                   <li className="nav-item">
-                    <button className={`nav-link ${activeTab === String(USER_TYPE_ID.CANDIDATE) ? 'active' : ''}`} onClick={() => handleTabChange(String(USER_TYPE_ID.CANDIDATE))} type="button">
+                    <button className={`nav-link ${formData.user_type_id === String(USER_TYPE_ID.CANDIDATE) ? 'active' : ''}`} onClick={() => handleTabChange(String(USER_TYPE_ID.CANDIDATE))} type="button">
                       <FaUserTie /> Candidate
                     </button>
                   </li>
                   <li className="nav-item">
-                    <button className={`nav-link ${activeTab === String(USER_TYPE_ID.EMPLOYER) ? 'active' : ''}`} onClick={() => handleTabChange(String(USER_TYPE_ID.EMPLOYER))} type="button">
+                    <button className={`nav-link ${formData.user_type_id === String(USER_TYPE_ID.EMPLOYER) ? 'active' : ''}`} onClick={() => handleTabChange(String(USER_TYPE_ID.EMPLOYER))} type="button">
                       <FaBuilding /> Employer
                     </button>
                   </li>
                 </ul>
                 <div className="tab-content" id="myTab2Content">
-                  <div className={`tab-pane fade ${activeTab === String(USER_TYPE_ID.CANDIDATE) ? 'show active' : ''}`} id="login-candidate">
+                  <div className={`tab-pane fade ${formData.user_type_id === String(USER_TYPE_ID.CANDIDATE) ? 'show active' : ''}`} id="login-candidate">
                     <div className="row">
                       <div className="col-lg-12">
                         <div className="form-group mb-3">
@@ -152,7 +158,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, activeTab=1, o
                       </div>
                     </div>
                   </div>
-                  <div className={`tab-pane fade ${activeTab === String(USER_TYPE_ID.EMPLOYER) ? 'show active' : ''}`} id="login-Employer">
+                  <div className={`tab-pane fade ${formData.user_type_id === String(USER_TYPE_ID.EMPLOYER) ? 'show active' : ''}`} id="login-Employer">
                     <div className="row">
                       <div className="col-lg-12">
                         <div className="form-group mb-3">
