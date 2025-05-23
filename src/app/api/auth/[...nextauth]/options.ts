@@ -8,24 +8,26 @@ export const authOptions: NextAuthOptions = {
         CredentialsProvider({
             name: 'Credentials',
             credentials: {
-                email_address: { label: 'Email', type: 'text' },
+                login: { label: 'Login', type: 'text' },
                 password: { label: 'Password', type: 'password' },
             },
             async authorize(credentials) {
-                if (!credentials?.email_address || !credentials?.password) {
+                console.log(credentials);
+                if (!credentials?.login || !credentials?.password) {
                     throw new Error(JSON.stringify({
                         statusCode: 400,
-                        message: "Email and password are required"
+                        message: "Login and password are required"
                     }));
                 }
-
+                console.log(credentials);
                 const response = await authService.login(
                     {
-                        login: credentials.email_address,
+                        login: credentials.login,
                         password: credentials.password
                     }
                 );
-
+                console.log(response);
+                
                 if (response.success && response.data) {
                     const userData = response.data as AuthResponse['data'];
                     if (!userData) return null;

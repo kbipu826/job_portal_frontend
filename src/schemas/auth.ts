@@ -5,7 +5,7 @@ export const registerSchema = z.object({
     email: z.string().email({ message: 'Invalid email address' }),
     password: z.string().min(8, { message: 'Password must be at least 8 characters long' }),
     phone: z.string().min(1, { message: 'Phone number is required' }),
-    user_type_id: z.number().min(1, { message: 'User type is required' }),
+    user_type_id: z.string().min(1, { message: 'User type is required' }),
 });
 
 export const loginSchema = z.object({
