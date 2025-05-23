@@ -18,8 +18,7 @@ export const handleMutationSuccess = (
     }
 };
 
-export const handleMutationError = (error: { message?: string }, toast: ToastInterface) => {
-    if (error.message) {
-        toast.error({ message: error.message });
-    }
+export const handleMutationError = (error: unknown, toast: ToastInterface) => {
+    const errorMessage = error instanceof Error ? error.message : 'An error occurred';
+    toast.error({ message: errorMessage });
 };
