@@ -66,7 +66,6 @@ const Header = () => {
                 className={`navbar-toggler ${mobileNavOpen ? '' : 'collapsed'}`}
                 onClick={toggleMobileNav}
               >
-                <span className="sr-only">Toggle navigation</span>
                 <FiMenu size={24} />
               </button>
 
@@ -74,7 +73,43 @@ const Header = () => {
               <div className={`nav-animation header-nav navbar-collapse collapse d-flex justify-content-center ${mobileNavOpen ? 'show' : ''}`}>
                 <ul className="nav navbar-nav">
                   <li className="has-mega-menu">
-                    <Link href="/" >Home</Link>
+                    <Link href="#" onClick={(e) => e.preventDefault()}>Home</Link>
+                    <ul className="mega-menu">
+                      <li>
+                        <ul>
+                          <li><Link href="/index">Home-1</Link></li>
+                          <li><Link href="/index-2">Home-2</Link></li>
+                          <li><Link href="/index-3">Home-3</Link></li>
+                          <li><Link href="/index-4">Home-4</Link></li>
+                          <li><Link href="/index-5">Home-5</Link></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <ul>
+                          <li><Link href="/index-6">Home-6</Link></li>
+                          <li><Link href="/index-7">Home-7</Link></li>
+                          <li><Link href="/index-8">Home-8</Link></li>
+                          <li><Link href="/index-9">Home-9</Link></li>
+                          <li><Link href="/index-10">Home-10</Link></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <ul>
+                          <li><Link href="/index-11">Home-11</Link></li>
+                          <li><Link href="/index-12">Home-12</Link></li>
+                          <li><Link href="/index-13">Home-13</Link></li>
+                          <li><Link href="/index-14">Home-14</Link></li>
+                          <li><Link href="/index-15">Home-15</Link></li>
+                        </ul>
+                      </li>
+                      <li>
+                        <ul>
+                          <li><Link href="/index-16">Home-16</Link></li>
+                          <li><Link href="/index-17">Home-17</Link></li>
+                          <li><Link href="/index-18">Home-18</Link></li>
+                        </ul>
+                      </li>
+                    </ul>
                   </li>
                   <li className="has-child">
                     <Link href="#" onClick={(e) => e.preventDefault()}>Jobs</Link>
@@ -182,13 +217,14 @@ const Header = () => {
                   <div className="header-nav-btn-section">
                     <div className="twm-nav-btn-left">
                       <button
-                        className="twm-nav-sign-up"
+                      type='button'
+                        className="custom-btn"
                         onClick={openSignUpModal}
                       >
                         <FiLogIn /> Sign Up
                       </button>
                     </div>
-                    <div className="twm-nav-btn-right">
+                    <div className="custom-btn1">
                       <Link href="/dash-post-job" className="twm-nav-post-a-job">
                         <FiBriefcase /> Post a job
                       </Link>

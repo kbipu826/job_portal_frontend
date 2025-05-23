@@ -1,3 +1,5 @@
+app > page.tsx
+
 import Banner from "@/components/HeroSection/HeroSection";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
@@ -9,8 +11,9 @@ import TopRecruiter from "@/components/TopRecruiter/TopRecruiter";
 import FeaturedCity from "@/components/FeaturedCity/FeturedCity";
 import Blog from "@/components/Blog/Blog";
 import NewsLetter from "@/components/NewsLetter/NewsLetter";
+import './global.css'
 
-  
+
 export default function Home() {
   return (
     <div className="page-wraper" data-anm=".anm">
