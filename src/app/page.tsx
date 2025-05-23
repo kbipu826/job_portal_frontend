@@ -1,5 +1,3 @@
-app > page.tsx
-
 import Banner from "@/components/HeroSection/HeroSection";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
