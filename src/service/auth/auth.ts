@@ -1,6 +1,6 @@
 import { fetchHandler } from "@/lib/api-utils";
-import { RegisterPayload, LoginPayload } from "@/types/payload";
 import { ApiResponse } from "@/types/index.d";
+import { RegisterSchema, LoginSchema } from "@/schemas/auth";
 
 const AUTH_API = {
   REGISTER: "register",
@@ -8,8 +8,8 @@ const AUTH_API = {
 } as const;
 
 export const authService = {
-  register: (data: RegisterPayload) =>
+  register: (data: RegisterSchema) =>
     fetchHandler<ApiResponse>(AUTH_API.REGISTER, "POST", data),
-  login: (data: LoginPayload) =>
+  login: (data: LoginSchema) =>
     fetchHandler<ApiResponse>(AUTH_API.LOGIN, "POST", data),
 };
