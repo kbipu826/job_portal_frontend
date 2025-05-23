@@ -20,7 +20,8 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose, activeTab=1,
     email: '',
     password: '',
     phone: '',
-    agreeToTerms: false
+    agreeToTerms: false,
+    user_type_id: activeTab
   });
 
   if (!isOpen) return null;
@@ -28,6 +29,11 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose, activeTab=1,
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if(!formData.agreeToTerms) {
+      toast.error('You must agree to the terms and conditions');
+      return;
+    }
+    
     try {
       const validatedData = registerSchema.parse({
         ...formData,
@@ -63,6 +69,14 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose, activeTab=1,
     setFormData(prev => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handleTabChange = (tab: string) => {
+    onTabChange(tab);
+    setFormData(prev => ({
+      ...prev,
+      user_type_id: tab
     }));
   };
 
@@ -172,21 +186,13 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose, activeTab=1,
             <div className="modal-body">
               <div className="twm-tabs-style-2">
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
-                  <li className="nav-item" role="presentation">
-                    <button
-                      className={`nav-link ${activeTab === String(USER_TYPE_ID.CANDIDATE) ? 'active' : ''}`}
-                      onClick={() => onTabChange(String(USER_TYPE_ID.CANDIDATE))}
-                      type="button"
-                    >
+                  <li className="nav-item">
+                    <button className={`nav-link ${activeTab === String(USER_TYPE_ID.CANDIDATE) ? 'active' : ''}`} onClick={() => handleTabChange(String(USER_TYPE_ID.CANDIDATE))} type="button">
                       <FaUserTie /> Candidate
                     </button>
                   </li>
-                  <li className="nav-item" role="presentation">
-                    <button
-                      className={`nav-link ${activeTab === String(USER_TYPE_ID.EMPLOYER) ? 'active' : ''}`}
-                      onClick={() => onTabChange(String(USER_TYPE_ID.EMPLOYER))}
-                      type="button"
-                    >
+                  <li className="nav-item">
+                    <button className={`nav-link ${activeTab === String(USER_TYPE_ID.EMPLOYER) ? 'active' : ''}`} onClick={() => handleTabChange(String(USER_TYPE_ID.EMPLOYER))} type="button">
                       <FaBuilding /> Employer
                     </button>
                   </li>

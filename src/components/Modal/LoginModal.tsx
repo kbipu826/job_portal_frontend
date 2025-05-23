@@ -18,6 +18,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, activeTab=1, o
   const [formData, setFormData] = useState({
     login: '',
     password: '',
+    user_type_id: activeTab
   });
 
   if (!isOpen) return null;
@@ -59,6 +60,14 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, activeTab=1, o
     }));
   };
 
+  const handleTabChange = (tab: string) => {
+    onTabChange(tab);
+    setFormData(prev => ({
+      ...prev,
+      user_type_id: tab
+    }));
+  };
+
   return (
     <div className={`modal fade twm-sign-up show`} style={{ display: 'block' }} id="sign_up_popup2" aria-hidden={!isOpen} aria-labelledby="sign_up_popupLabel2" tabIndex={-1}>
       <div className="modal-dialog modal-dialog-centered">
@@ -73,12 +82,12 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, activeTab=1, o
               <div className="twm-tabs-style-2">
                 <ul className="nav nav-tabs" id="myTab2" role="tablist">
                   <li className="nav-item">
-                    <button className={`nav-link ${activeTab === String(USER_TYPE_ID.CANDIDATE) ? 'active' : ''}`} onClick={() => onTabChange(String(USER_TYPE_ID.CANDIDATE))} type="button">
+                    <button className={`nav-link ${activeTab === String(USER_TYPE_ID.CANDIDATE) ? 'active' : ''}`} onClick={() => handleTabChange(String(USER_TYPE_ID.CANDIDATE))} type="button">
                       <FaUserTie /> Candidate
                     </button>
                   </li>
                   <li className="nav-item">
-                    <button className={`nav-link ${activeTab === String(USER_TYPE_ID.EMPLOYER) ? 'active' : ''}`} onClick={() => onTabChange(String(USER_TYPE_ID.EMPLOYER))} type="button">
+                    <button className={`nav-link ${activeTab === String(USER_TYPE_ID.EMPLOYER) ? 'active' : ''}`} onClick={() => handleTabChange(String(USER_TYPE_ID.EMPLOYER))} type="button">
                       <FaBuilding /> Employer
                     </button>
                   </li>
