@@ -1,6 +1,10 @@
+import { signOut } from 'next-auth/react';
 import React from 'react';
 
 const Dashboard = () => {
+  const handleLogout = () => {
+    signOut();
+  };
   return (
     <div className="page-wraper">
       <header id="header-admin-wrap" className="header-admin-fixed">
@@ -144,7 +148,7 @@ const Dashboard = () => {
                             <li><a href="dashboard.html"><i className="fa fa-home"></i>Dashboard</a></li>
                             <li><a href="dash-messages.html"><i className="fa fa-envelope"></i> Messages</a></li>
                             <li><a href="dash-my-profile.html"><i className="fa fa-user"></i> Profile</a></li>
-                            <li><a href="index.html"><i className="fa fa-share-square"></i> Logout</a></li>
+                            <li><a href="#" onClick={handleLogout}><i className="fa fa-share-square"></i> Logout</a></li>
                           </ul>
                         </div>
                       </div>
