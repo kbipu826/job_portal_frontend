@@ -10493,13 +10493,14 @@ ol.comment-list li.comment .comment-respond .comment-form p {
     display: block;
     padding-top: 0px;
     margin-top: 7px;
+    margin-bottom: 2px;
 }
 
 .twm-bnr-search-bar .form-select,
 .twm-bnr-search-bar .form-control {
     font-size: 14px;
     height: 34px;
-    padding: 0px;
+    padding: 0px 12px;
     font-weight: 500;
     border: none;
 }

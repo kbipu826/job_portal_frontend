@@ -30,7 +30,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-1">
-                                        <FaHandshake className="icon-xld" />
+                                        <FaHandshake className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Marketing & Sale</a>
@@ -43,7 +43,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-3">
-                                        <FaHeadset className="icon-xld" />
+                                        <FaHeadset className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Customer Help</a>
@@ -56,7 +56,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-2">
-                                        <FaChartBar className="icon-xld" />
+                                        <FaChartBar className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Finance</a>
@@ -69,7 +69,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-4">
-                                        <MdDashboard className="icon-xld" />
+                                        <MdDashboard className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Software</a>
@@ -82,7 +82,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-1">
-                                        <FaUserTie className="icon-xld" />
+                                        <FaUserTie className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Human Resource</a>
@@ -95,7 +95,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-3">
-                                        <FaTasks className="icon-xld" />
+                                        <FaTasks className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Management</a>
@@ -108,7 +108,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-2">
-                                        <FaUser className="icon-xld" />
+                                        <FaUser className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Retail & Products</a>
@@ -121,7 +121,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-4">
-                                        <FaTools className="icon-xld" />
+                                        <FaTools className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Security Analyst</a>
@@ -134,7 +134,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-3">
-                                        <FaRegStickyNote className="icon-xld" />
+                                        <FaRegStickyNote className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Content Writer</a>
@@ -147,7 +147,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-2">
-                                        <FaCode className="icon-xld" />
+                                        <FaCode className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Market Research</a>
@@ -160,7 +160,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-4">
-                                        <FaBriefcase className="icon-xld" />
+                                        <FaBriefcase className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Marketing & Sale</a>
@@ -173,7 +173,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-1">
-                                        <FaUserCog className="icon-xld" />
+                                        <FaUserCog className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Customer Help</a>
@@ -186,7 +186,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-3">
-                                        <FaHandshake className="icon-xld" />
+                                        <FaHandshake className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Marketing & Sale</a>
@@ -199,7 +199,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-2">
-                                        <FaHeadset className="icon-xld" />
+                                        <FaHeadset className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Customer Help</a>
@@ -212,7 +212,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-4">
-                                        <FaChartBar className="icon-xld" />
+                                        <FaChartBar className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Finance</a>
@@ -225,7 +225,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-1">
-                                        <MdDashboard className="icon-xld" />
+                                        <MdDashboard className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Software</a>
@@ -238,7 +238,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-3">
-                                        <FaUserTie className="icon-xld" />
+                                        <FaUserTie className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Human Resource</a>
@@ -251,7 +251,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-2">
-                                        <FaTasks className="icon-xld" />
+                                        <FaTasks className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Management</a>
@@ -264,7 +264,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-4">
-                                        <FaUser className="icon-xld" />
+                                        <FaUser className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Retail & Products</a>
@@ -277,7 +277,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-1">
-                                        <FaTools className="icon-xld" />
+                                        <FaTools className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Security Analyst</a>
@@ -290,7 +290,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-3">
-                                        <FaRegStickyNote className="icon-xld" />
+                                        <FaRegStickyNote className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Content Writer</a>
@@ -303,7 +303,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-2">
-                                        <FaCode className="icon-xld" />
+                                        <FaCode className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Market Research</a>
@@ -316,7 +316,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-4">
-                                        <FaBriefcase className="icon-xld" />
+                                        <FaBriefcase className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Marketing & Sale</a>
@@ -329,7 +329,7 @@ const JobsCategory: React.FC = () => {
                             <div className="swiper-slide">
                                 <div className="job-categories-home-5">
                                     <div className="twm-media cat-bg-clr-1">
-                                        <FaUserCog className="icon-xld" />
+                                        <FaUserCog className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
                                         <a href="job-detail.html">Customer Help</a>

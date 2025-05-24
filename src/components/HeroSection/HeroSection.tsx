@@ -22,8 +22,8 @@ const Banner: React.FC = () => {
                                 <div className="row">
                                     <div className="form-group col-xl-4 col-lg-12 col-md-12">
                                         <label htmlFor="j-All_Category">Type</label>
-                                        <select className="wt-search-bar-select selectpicker" data-live-search="true" id="j-All_Category">
-                                            <option value="" disabled>Select Category</option>
+                                        <select className="form-control" id="j-All_Category">
+                                            <option value="" disabled selected>Select Category</option>
                                             <option value="all">All Category</option>
                                             <option value="web-designer">Web Designer</option>
                                             <option value="developer">Developer</option>

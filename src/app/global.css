@@ -115,6 +115,8 @@ body {
   overflow: hidden;
   position: relative;
   z-index: 0;
+  border: none !important;
+   
 }
 
 .custom-btn:hover {
@@ -123,6 +125,9 @@ body {
 }
 
 .custom-btn1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #1967d2;
   color: #fff !important;
   font-size: 16px;
@@ -164,3 +169,12 @@ body {
     transform: translateY(10px);
   }
 }
+
+
+
+@media (max-width: 1024px) {
+  .hidden-lg {
+    display: none !important;
+  }
+}
+
