@@ -35,7 +35,7 @@ export async function middleware(request: NextRequest) {
     }
 
     if (isEmployerRoute && userType !== USER_TYPE_ID.EMPLOYER) {
-      return NextResponse.redirect(new URL("/dashboard", request.url));
+      return NextResponse.redirect(new URL("/candidate-dashboard", request.url));
     }
   }
 
