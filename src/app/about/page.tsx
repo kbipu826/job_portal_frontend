@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Footer from '../../components/Footer/Footer';
+import Image from 'next/image';
 
 const AboutPage = () => {
   return (
@@ -128,7 +129,7 @@ const AboutPage = () => {
                           <div className={`twm-w-pro-top bg-clr-${step.color}-light bg-${step.color}-light-shadow`}>
                             <span className={`twm-large-number text-clr-${step.color}`}>{step.number}</span>
                             <div className="twm-media">
-                              <span><img src={step.icon} alt={`icon${index + 1}`} /></span>
+                              <span><Image src={step.icon} alt={`icon${index + 1}`} /></span>
                             </div>
                             <h4 className="twm-title">{step.title}</h4>
                             <p>{step.description}</p>
@@ -151,7 +152,7 @@ const AboutPage = () => {
                 <div className="col-lg-4 col-md-12">
                   <div className="twm-explore-media-wrap">
                     <div className="twm-media">
-                      <img src="/images/gir-large.png" alt="" />
+                      <Image src="/images/gir-large.png" alt="" />
                     </div>
                   </div>
                 </div>
@@ -192,15 +193,66 @@ const AboutPage = () => {
           <div className="container">
             <div className="section-content">
               <div className="owl-carousel home-client-carousel2 owl-btn-vertical-center">
-                {[1, 2, 3, 4, 5, 6, 1, 2, 3, 5].map((num, index) => (
-                  <div key={index} className="item">
-                    <div className="ow-client-logo">
-                      <div className="client-logo client-logo-media">
-                        <a href="/employer-list"><img src={`/images/client-logo/w${num}.png`} alt="" /></a>
-                      </div>
-                    </div>
+                <div className="item">
+                  <div className="ow-client-logo">
+                    <div className="client-logo client-logo-media">
+                      <a href="employer-list.html"><Image src="images/client-logo/w1.png" alt="" /></a></div>
                   </div>
-                ))}
+                </div>
+                <div className="item">
+                  <div className="ow-client-logo">
+                    <div className="client-logo client-logo-media">
+                      <a href="employer-list.html"><Image src="images/client-logo/w2.png" alt="" /></a></div>
+                  </div>
+                </div>
+                <div className="item">
+                  <div className="ow-client-logo">
+                    <div className="client-logo client-logo-media">
+                      <a href="employer-list.html"><Image src="images/client-logo/w3.png" alt="" /></a></div>
+                  </div>
+                </div>
+                <div className="item">
+                  <div className="ow-client-logo">
+                    <div className="client-logo client-logo-media">
+                      <a href="employer-list.html"><Image src="images/client-logo/w4.png" alt="" /></a></div>
+                  </div>
+                </div>
+                <div className="item">
+                  <div className="ow-client-logo">
+                    <div className="client-logo client-logo-media">
+                      <a href="employer-list.html"><Image src="images/client-logo/w5.png" alt="" /></a></div>
+                  </div>
+                </div>
+                <div className="item">
+                  <div className="ow-client-logo">
+                    <div className="client-logo client-logo-media">
+                      <a href="employer-list.html"><Image src="images/client-logo/w6.png" alt="" /></a></div>
+                  </div>
+                </div>
+                <div className="item">
+                  <div className="ow-client-logo">
+                    <div className="client-logo client-logo-media">
+                      <a href="employer-list.html"><Image src="images/client-logo/w1.png" alt="" /></a></div>
+                  </div>
+                </div>
+                <div className="item">
+                  <div className="ow-client-logo">
+                    <div className="client-logo client-logo-media">
+                      <a href="employer-list.html"><Image src="images/client-logo/w2.png" alt="" /></a></div>
+                  </div>
+                </div>
+                <div className="item">
+                  <div className="ow-client-logo">
+                    <div className="client-logo client-logo-media">
+                      <a href="employer-list.html"><Image src="images/client-logo/w3.png" alt="" /></a></div>
+                  </div>
+                </div>
+                <div className="item">
+                  <div className="ow-client-logo">
+                    <div className="client-logo client-logo-media">
+                      <a href="employer-list.html"><Image src="images/client-logo/w5.png" alt="" /></a></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
