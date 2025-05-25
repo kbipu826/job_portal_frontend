@@ -5,6 +5,13 @@ import { SessionProvider } from 'next-auth/react';
 import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import dynamic from 'next/dynamic';
+
+// Dynamically import ScriptProvider with no SSR
+const ScriptProvider = dynamic(
+  () => import('./ScriptProvider'),
+  { ssr: false }
+);
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -23,6 +30,7 @@ const Providers = ({ children }: ProvidersProps) => {
   return (
     <QueryClientProvider client={queryClient}>
       <SessionProvider>
+        <ScriptProvider />
         {children}
         <Toaster
           position="top-right"

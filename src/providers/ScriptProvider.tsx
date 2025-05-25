@@ -10,36 +10,30 @@ declare global {
   }
 }
 
-// Script initialization component
-const ScriptInitializer = () => {
+const ScriptProvider = () => {
   useEffect(() => {
-    const initializeScripts = () => {
-      if (typeof window !== 'undefined' && window.jQuery) {
-        // Initialize any jQuery plugins here
-        console.log('✅ Core bootstrap scripts loaded');
+    const loadScripts = async () => {
+      try {
+        // Wait for jQuery to be available
+        const checkJQuery = setInterval(() => {
+          if (typeof window !== 'undefined' && window.jQuery) {
+            clearInterval(checkJQuery);
+            console.log('✅ jQuery loaded');
+          }
+        }, 100);
+
+        // Cleanup interval on unmount
+        return () => clearInterval(checkJQuery);
+      } catch (error) {
+        console.error('Error loading scripts:', error);
       }
     };
 
-    const checkJQuery = setInterval(() => {
-      if (typeof window !== 'undefined' && window.jQuery) {
-        clearInterval(checkJQuery);
-        initializeScripts();
-      }
-    }, 100);
-
-    return () => {
-      clearInterval(checkJQuery);
-    };
+    loadScripts();
   }, []);
 
-  return null;
-};
-
-// Main script provider component
-const ScriptProvider = () => {
   return (
     <>
-      <ScriptInitializer />
       <Script 
         src="/js/jquery.min.js"
         strategy="beforeInteractive"
