@@ -10,9 +10,9 @@ declare global {
   }
 }
 
-const ScriptProvider = () => {
+// Script initialization component
+const ScriptInitializer = () => {
   useEffect(() => {
-    // Initialize any scripts that need to run after page load
     const initializeScripts = () => {
       if (typeof window !== 'undefined' && window.jQuery) {
         // Initialize any jQuery plugins here
@@ -20,7 +20,6 @@ const ScriptProvider = () => {
       }
     };
 
-    // Wait for jQuery to be available
     const checkJQuery = setInterval(() => {
       if (typeof window !== 'undefined' && window.jQuery) {
         clearInterval(checkJQuery);
@@ -33,8 +32,14 @@ const ScriptProvider = () => {
     };
   }, []);
 
+  return null;
+};
+
+// Main script provider component
+const ScriptProvider = () => {
   return (
     <>
+      <ScriptInitializer />
       <Script 
         src="/js/jquery.min.js"
         strategy="beforeInteractive"
