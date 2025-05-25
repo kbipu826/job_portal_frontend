@@ -88,7 +88,9 @@
     color: inherit;
     border: none;
     padding: 0 !important;
-    font: inherit
+    font: inherit;
+    font-weight: bold;
+    font-size: large;
 }
 
 .owl-carousel.owl-loading {
