@@ -6,7 +6,7 @@ import { USER_TYPE_ID } from "@/lib/constants";
 const publicRoutes = ["/", "/sign-in"];
 
 // Define role-specific routes
-const candidateRoutes = ["/dashboard"];
+const candidateRoutes = ["/candidate-dashboard"];
 const employerRoutes = ["/employee-dashboard"];
 
 export const config = {
