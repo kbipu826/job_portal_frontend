@@ -3,7 +3,6 @@ import ScriptProvider from "@/providers/ScriptProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import './global.css'
-import Script from 'next/script';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,6 +35,7 @@ export default function RootLayout({
     "css/switcher.css"
   ];
 
+
   return (
     <html lang="en">
       <head>
@@ -46,23 +46,9 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Providers>
-          {children}
+            {children}
         </Providers>
         <ScriptProvider />
-        <Script 
-          src="https://code.jquery.com/jquery-3.6.0.min.js"
-          strategy="beforeInteractive"
-          onLoad={() => {
-            console.log('✅ jQuery loaded');
-          }}
-        />
-        <Script 
-          src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"
-          strategy="afterInteractive"
-          onLoad={() => {
-            console.log('✅ Waypoints loaded');
-          }}
-        />
       </body>
     </html>
   );
