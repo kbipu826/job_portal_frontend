@@ -3,7 +3,7 @@ import { getToken } from "next-auth/jwt";
 import { USER_TYPE_ID } from "@/lib/constants";
 
 // Define public routes that don't require authentication
-const publicRoutes = ["/", "/sign-in"];
+const publicRoutes = ["/", "/sign-in", "/about","/sign-up"];
 
 // Define role-specific routes
 const candidateRoutes = ["/candidate-dashboard"];
