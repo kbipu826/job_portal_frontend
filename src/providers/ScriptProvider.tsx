@@ -17,66 +17,85 @@ export default function ScriptProvider() {
   const [jQueryReady, setJQueryReady] = useState(false);
   const [pluginsReady, setPluginsReady] = useState(false);
 
-  // ✅ 1. Load jQuery and core scripts first
+  // ✅ 1. Load jQuery first and wait for it to be ready
   useEffect(() => {
-    const loadCoreScripts = async () => {
+    const loadJQuery = async () => {
       try {
-        // jQuery
+        // Load jQuery
         await loadScript('/js/jquery-3.6.0.min.js');
-        console.log('✅ jQuery loaded');
-
+        
         // Wait for jQuery to be fully initialized
-        await new Promise(resolve => {
+        await new Promise<void>((resolve) => {
           const checkJQuery = setInterval(() => {
-            if (window.jQuery && window.jQuery.fn) {
+            if (window.jQuery && typeof window.jQuery === 'function') {
               clearInterval(checkJQuery);
-              resolve(true);
+              resolve();
             }
           }, 100);
         });
 
-        // Bootstrap dependencies
+        console.log('✅ jQuery loaded and initialized');
+        setJQueryReady(true);
+      } catch (e) {
+        console.error('❌ Failed to load jQuery', e);
+      }
+    };
+
+    loadJQuery();
+  }, []);
+
+  // ✅ 2. Load Bootstrap and core dependencies after jQuery
+  useEffect(() => {
+    if (!jQueryReady) return;
+
+    const loadCoreScripts = async () => {
+      try {
         await loadScript('/js/popper.min.js');
         await loadScript('/js/bootstrap.min.js');
         console.log('✅ Core bootstrap scripts loaded');
-        setJQueryReady(true);
       } catch (e) {
         console.error('❌ Failed to load core scripts', e);
       }
     };
 
     loadCoreScripts();
-  }, []);
+  }, [jQueryReady]);
 
-  // ✅ 2. Load all jQuery plugins after jQuery is ready
+  // ✅ 3. Load jQuery plugins after core scripts
   useEffect(() => {
     if (!jQueryReady) return;
 
     const loadPlugins = async () => {
       try {
-        // jQuery plugins (in correct order)
-        await loadScript('/js/owl.carousel.min.js');
-        await loadScript('/js/jquery.magnific-popup.min.js');
-        await loadScript('/js/lc_lightbox.lite.js');
-        await loadScript('/js/bootstrap-select.min.js');
-        await loadScript('/js/jquery.dataTables.min.js');
-        await loadScript('/js/dataTables.bootstrap5.min.js');
-        await loadScript('/js/select.bootstrap5.min.js');
-        await loadScript('/js/waypoints.min.js');
-        await loadScript('/js/jquery.waypoints.min.js');
-        await loadScript('/js/waypoints-sticky.min.js');
-        await loadScript('/js/counterup.min.js');
-        await loadScript('/js/isotope.pkgd.min.js');
-        await loadScript('/js/imagesloaded.pkgd.min.js');
-        await loadScript('/js/theia-sticky-sidebar.js');
-        await loadScript('/js/dropzone.js');
-        await loadScript('/js/jquery.scrollbar.min.js');
-        await loadScript('/js/bootstrap-datepicker.js');
-        await loadScript('/js/chart.js');
-        await loadScript('/js/anm.js');
-        await loadScript('/js/bootstrap-slider.min.js');
-        await loadScript('/js/swiper-bundle.min.js');
-        await loadScript('/js/switcher.js');
+        // Load plugins in correct order
+        const plugins = [
+          '/js/owl.carousel.min.js',
+          '/js/jquery.magnific-popup.min.js',
+          '/js/lc_lightbox.lite.js',
+          '/js/bootstrap-select.min.js',
+          '/js/jquery.dataTables.min.js',
+          '/js/dataTables.bootstrap5.min.js',
+          '/js/select.bootstrap5.min.js',
+          '/js/waypoints.min.js',
+          '/js/jquery.waypoints.min.js',
+          '/js/waypoints-sticky.min.js',
+          '/js/counterup.min.js',
+          '/js/isotope.pkgd.min.js',
+          '/js/imagesloaded.pkgd.min.js',
+          '/js/theia-sticky-sidebar.js',
+          '/js/dropzone.js',
+          '/js/jquery.scrollbar.min.js',
+          '/js/bootstrap-datepicker.js',
+          '/js/chart.js',
+          '/js/anm.js',
+          '/js/bootstrap-slider.min.js',
+          '/js/swiper-bundle.min.js',
+          '/js/switcher.js'
+        ];
+
+        for (const plugin of plugins) {
+          await loadScript(plugin);
+        }
 
         console.log('✅ All jQuery plugins loaded');
         setPluginsReady(true);
@@ -88,7 +107,7 @@ export default function ScriptProvider() {
     loadPlugins();
   }, [jQueryReady]);
 
-  // ✅ 3. Load custom.js last
+  // ✅ 4. Load custom.js last
   useEffect(() => {
     if (!pluginsReady) return;
 
@@ -122,5 +141,5 @@ export default function ScriptProvider() {
     });
   };
 
-  return null; // All handled via dynamic injection
+  return null;
 }
