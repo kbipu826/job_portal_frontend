@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect } from 'react';
-import Script from 'next/script';
 
 // Declare jQuery type on window object
 declare global {
@@ -10,19 +9,51 @@ declare global {
   }
 }
 
-const ScriptProvider = () => {
+// Client-side script loader component
+const ClientScriptLoader = () => {
   useEffect(() => {
     const loadScripts = async () => {
       try {
+        // Load jQuery first
+        if (!window.jQuery) {
+          const jqueryScript = document.createElement('script');
+          jqueryScript.src = '/js/jquery.min.js';
+          jqueryScript.async = false;
+          document.head.appendChild(jqueryScript);
+        }
+
         // Wait for jQuery to be available
         const checkJQuery = setInterval(() => {
-          if (typeof window !== 'undefined' && window.jQuery) {
+          if (window.jQuery) {
             clearInterval(checkJQuery);
             console.log('✅ jQuery loaded');
+            
+            // Load other scripts after jQuery is available
+            const scripts = [
+              '/js/bootstrap.bundle.min.js',
+              '/js/owl.carousel.min.js',
+              '/js/jquery.magnific-popup.min.js',
+              '/js/lc_lightbox.lite.js',
+              '/js/bootstrap-select.min.js',
+              '/js/jquery.dataTables.min.js',
+              '/js/dataTables.bootstrap5.min.js',
+              '/js/select.bootstrap5.min.js',
+              '/js/dropzone.js',
+              '/js/jquery.scrollbar.min.js',
+              '/js/bootstrap-datepicker.js',
+              '/js/swiper-bundle.min.js',
+              '/js/custom.js'
+            ];
+
+            scripts.forEach(src => {
+              const script = document.createElement('script');
+              script.src = src;
+              script.async = true;
+              document.body.appendChild(script);
+            });
           }
         }, 100);
 
-        // Cleanup interval on unmount
         return () => clearInterval(checkJQuery);
       } catch (error) {
         console.error('Error loading scripts:', error);
@@ -32,66 +63,12 @@ const ScriptProvider = () => {
     loadScripts();
   }, []);
 
-  return (
-    <>
-      <Script 
-        src="/js/jquery.min.js"
-        strategy="beforeInteractive"
-      />
-      <Script 
-        src="/js/bootstrap.bundle.min.js" 
-        strategy="afterInteractive"
-      />
-      <Script 
-        src="/js/owl.carousel.min.js" 
-        strategy="afterInteractive"
-      />
-      <Script 
-        src="/js/jquery.magnific-popup.min.js" 
-        strategy="afterInteractive"
-      />
-      <Script 
-        src="/js/lc_lightbox.lite.js" 
-        strategy="afterInteractive"
-      />
-      <Script 
-        src="/js/bootstrap-select.min.js" 
-        strategy="afterInteractive"
-      />
-      <Script 
-        src="/js/jquery.dataTables.min.js" 
-        strategy="afterInteractive"
-      />
-      <Script 
-        src="/js/dataTables.bootstrap5.min.js" 
-        strategy="afterInteractive"
-      />
-      <Script 
-        src="/js/select.bootstrap5.min.js" 
-        strategy="afterInteractive"
-      />
-      <Script 
-        src="/js/dropzone.js" 
-        strategy="afterInteractive"
-      />
-      <Script 
-        src="/js/jquery.scrollbar.min.js" 
-        strategy="afterInteractive"
-      />
-      <Script 
-        src="/js/bootstrap-datepicker.js" 
-        strategy="afterInteractive"
-      />
-      <Script 
-        src="/js/swiper-bundle.min.js" 
-        strategy="afterInteractive"
-      />
-      <Script 
-        src="/js/custom.js" 
-        strategy="afterInteractive"
-      />
-    </>
-  );
+  return null;
+};
+
+// Main script provider component
+const ScriptProvider = () => {
+  return <ClientScriptLoader />;
 };
 
 export default ScriptProvider;
