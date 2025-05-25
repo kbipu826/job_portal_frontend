@@ -3,11 +3,9 @@ import { signOut } from 'next-auth/react';
 import React from 'react';
 
 const Dashboard = () => {
-  const handleLogout = async () => {
-    await signOut({ redirect: false });
-    window.location.href = '/';
-  };
+  const handleLogout = () => {
     signOut();
+  
     
   };
   return (

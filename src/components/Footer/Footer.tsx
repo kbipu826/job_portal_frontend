@@ -34,7 +34,7 @@ const Footer = () => {
                   <div className="widget widget_services ftr-list-center">
                     <h3 className="widget-title">For Candidate</h3>
                     <ul>
-                      <li><a href="dashboard.html">User Dashboard</a></li>
+                      <li><a href="candidate-dashboard">User Dashboard</a></li>
                       <li><a href="dash-resume-alert.html">Alert resume</a></li>
                       <li><a href="candidate-grid.html">Candidates</a></li>
                       <li><a href="blog-list.html">Blog List</a></li>

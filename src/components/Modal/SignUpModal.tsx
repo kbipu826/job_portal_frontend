@@ -59,7 +59,7 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose, activeTab=St
             toast.success('Logged in successfully');
             // Redirect based on user type
             if (formData.user_type_id === String(USER_TYPE_ID.CANDIDATE)) {
-              window.location.href = '/dashboard';
+              window.location.href = '/candidate-dashboard';
             } else if (formData.user_type_id === String(USER_TYPE_ID.EMPLOYER)) {
               window.location.href = '/employee-dashboard';
             }

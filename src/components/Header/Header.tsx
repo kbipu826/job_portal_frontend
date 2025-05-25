@@ -53,8 +53,8 @@ const Header = () => {
   };
 
   const getDashboardLink = () => {
-    if (!session?.user?.user_type_id) return '/dashboard';
-      return session.user.user_type_id === String(USER_TYPE_ID.EMPLOYER) ? '/employee-dashboard' : '/dashboard';
+    if (!session?.user?.user_type_id) return '/candidate-dashboard';
+      return session.user.user_type_id === String(USER_TYPE_ID.EMPLOYER) ? '/employee-dashboard' : '/candidate-dashboard';
     };
 
   return (

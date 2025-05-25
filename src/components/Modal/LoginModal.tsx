@@ -42,7 +42,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, activeTab, onT
         onClose();
         // Redirect based on user type
         if (formData.user_type_id === String(USER_TYPE_ID.CANDIDATE)) {
-          window.location.href = '/dashboard';
+          window.location.href = '/candidate-dashboard';
         } else if (formData.user_type_id === String(USER_TYPE_ID.EMPLOYER)) {
           window.location.href = '/employee-dashboard';
         }
