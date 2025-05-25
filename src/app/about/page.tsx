@@ -165,7 +165,13 @@ const AboutPage = () => {
                 <div className="col-lg-4 col-md-12">
                   <div className="twm-explore-media-wrap">
                     <div className="twm-media">
-                      <Image src="/images/gir-large.png" alt="" width={400} height={600} />
+                      <Image 
+                        src="/images/girl-large.png" 
+                        alt="Explore new life" 
+                        width={400} 
+                        height={600}
+                        priority
+                      />
                     </div>
                   </div>
                 </div>
