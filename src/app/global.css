@@ -257,7 +257,7 @@ body {
 
 
 .icon-wrapper:hover svg {
-  color: white;
+  scale: 1.2;
 }
 
 .me-2 {
