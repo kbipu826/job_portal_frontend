@@ -252,7 +252,7 @@ body {
 .icon-wrapper svg {
   color: var(--primary-color);
   transition: all 0.3s ease;
-  scale: 1.7;
+  font-size: large;
 }
 
 
