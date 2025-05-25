@@ -38,13 +38,24 @@ const CandidateProfile = () => {
 
   return (
     <div className="page-content">
-      <Breadcrumb 
-        title="My Profile" 
-        items={[
-          { label: 'Home', path: '/' },
-          { label: 'My Profile', path: '/candidate-profile' }
-        ]} 
-      />
+      <div className="wt-bnr-inr overlay-wraper bg-center" style={{ backgroundImage: 'url(/images/banner/1.jpg)' }}>
+        <div className="overlay-main site-bg-white opacity-01"></div>
+        <div className="container">
+          <div className="wt-bnr-inr-entry">
+            <div className="banner-title-outer">
+              <div className="banner-title-name">
+                <h2 className="wt-title">Candidate Profile</h2>
+              </div>
+            </div>
+            <div>
+              <ul className="wt-breadcrumb breadcrumb-style-2">
+                <li><a href="/">Home</a></li>
+                <li>Candidate Profile</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
       
       <div className="content-block">
         <div className="section-full bg-white content-inner-2">
