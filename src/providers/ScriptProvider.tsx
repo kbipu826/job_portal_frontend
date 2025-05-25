@@ -22,7 +22,7 @@ export default function ScriptProvider() {
     const loadCoreScripts = async () => {
       try {
         // jQuery
-        await loadScript('/js/jquery.min.js');
+        await loadScript('/js/jquery-3.6.0.min.js');
         console.log('✅ jQuery loaded');
 
         // Wait for jQuery to be fully initialized
@@ -37,7 +37,7 @@ export default function ScriptProvider() {
 
         // Bootstrap dependencies
         await loadScript('/js/popper.min.js');
-        await loadScript('/js/bootstrap.bundle.min.js');
+        await loadScript('/js/bootstrap.min.js');
         console.log('✅ Core bootstrap scripts loaded');
         setJQueryReady(true);
       } catch (e) {

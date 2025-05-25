@@ -22,7 +22,7 @@ const AboutPage = () => {
     <>
       <div className="page-content">
         {/* INNER PAGE BANNER */}
-        <div className="wt-bnr-inr overlay-wraper bg-center" style={{ backgroundImage: 'url(/images/banner/banner-1.jpg)' }}>
+        <div className="wt-bnr-inr overlay-wraper bg-center" style={{ backgroundImage: 'url(/images/banner/1.jpg)' }}>
           <div className="overlay-main site-bg-white opacity-01"></div>
           <div className="container">
             <div className="wt-bnr-inr-entry">
