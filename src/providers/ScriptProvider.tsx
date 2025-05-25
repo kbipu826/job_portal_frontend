@@ -6,10 +6,8 @@ import { useEffect, useState } from 'react';
 // Declare jQuery types
 declare global {
   interface Window {
-    jQuery: {
-      fn: any;
-      [key: string]: any;
-    };
+    jQuery: any;
+    $: any;
   }
 }
 
@@ -17,22 +15,29 @@ export default function ScriptProvider() {
   const [jQueryReady, setJQueryReady] = useState(false);
   const [pluginsReady, setPluginsReady] = useState(false);
 
-  // ✅ 1. Load jQuery first and wait for it to be ready
+  // ✅ 1. Load jQuery first and ensure it's globally available
   useEffect(() => {
     const loadJQuery = async () => {
       try {
         // Load jQuery
         await loadScript('/js/jquery-3.6.0.min.js');
         
-        // Wait for jQuery to be fully initialized
+        // Wait for jQuery to be fully initialized and globally available
         await new Promise<void>((resolve) => {
           const checkJQuery = setInterval(() => {
-            if (window.jQuery && typeof window.jQuery === 'function') {
+            if (window.jQuery && window.$ && typeof window.jQuery === 'function') {
+              // Ensure jQuery is properly initialized
+              window.jQuery.noConflict();
               clearInterval(checkJQuery);
               resolve();
             }
           }, 100);
         });
+
+        // Double check jQuery is available
+        if (!window.jQuery || !window.$) {
+          throw new Error('jQuery failed to initialize properly');
+        }
 
         console.log('✅ jQuery loaded and initialized');
         setJQueryReady(true);
@@ -50,6 +55,11 @@ export default function ScriptProvider() {
 
     const loadCoreScripts = async () => {
       try {
+        // Ensure jQuery is still available
+        if (!window.jQuery) {
+          throw new Error('jQuery not available');
+        }
+
         await loadScript('/js/popper.min.js');
         await loadScript('/js/bootstrap.min.js');
         console.log('✅ Core bootstrap scripts loaded');
@@ -67,6 +77,11 @@ export default function ScriptProvider() {
 
     const loadPlugins = async () => {
       try {
+        // Ensure jQuery is still available
+        if (!window.jQuery) {
+          throw new Error('jQuery not available');
+        }
+
         // Load plugins in correct order
         const plugins = [
           '/js/owl.carousel.min.js',
@@ -95,6 +110,8 @@ export default function ScriptProvider() {
 
         for (const plugin of plugins) {
           await loadScript(plugin);
+          // Add a small delay between plugin loads
+          await new Promise(resolve => setTimeout(resolve, 50));
         }
 
         console.log('✅ All jQuery plugins loaded');
@@ -113,6 +130,11 @@ export default function ScriptProvider() {
 
     const loadCustom = async () => {
       try {
+        // Ensure jQuery is still available
+        if (!window.jQuery) {
+          throw new Error('jQuery not available');
+        }
+
         await loadScript('/js/custom.js');
         console.log('✅ custom.js loaded');
       } catch (e) {
@@ -123,8 +145,8 @@ export default function ScriptProvider() {
     loadCustom();
   }, [pluginsReady]);
 
-  // 📦 Helper: load script dynamically
-  const loadScript = (src: string): Promise<void> => {
+  // 📦 Helper: load script dynamically with retry
+  const loadScript = (src: string, retries = 3): Promise<void> => {
     return new Promise((resolve, reject) => {
       const existing = document.querySelector(`script[src="${src}"]`);
       if (existing) {
@@ -135,8 +157,34 @@ export default function ScriptProvider() {
       const script = document.createElement('script');
       script.src = src;
       script.async = false;
-      script.onload = () => resolve();
-      script.onerror = (err) => reject(err);
+      
+      script.onload = () => {
+        // Verify script loaded properly
+        if (src.includes('jquery') && !window.jQuery) {
+          if (retries > 0) {
+            script.remove();
+            setTimeout(() => {
+              loadScript(src, retries - 1).then(resolve).catch(reject);
+            }, 1000);
+          } else {
+            reject(new Error(`Failed to load ${src} after ${retries} retries`));
+          }
+        } else {
+          resolve();
+        }
+      };
+      
+      script.onerror = (err) => {
+        if (retries > 0) {
+          script.remove();
+          setTimeout(() => {
+            loadScript(src, retries - 1).then(resolve).catch(reject);
+          }, 1000);
+        } else {
+          reject(err);
+        }
+      };
+
       document.body.appendChild(script);
     });
   };
