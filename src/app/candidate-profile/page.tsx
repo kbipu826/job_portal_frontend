@@ -6,20 +6,30 @@ import Breadcrumb from '@/components/Breadcrumb';
 
 const CandidateProfile = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
+    name: '',
     phone: '',
+    email: '',
     website: '',
-    address: '',
-    city: '',
-    state: '',
-    zip: '',
+    qualification: '',
+    language: '',
+    jobCategory: '',
+    experience: '',
+    currentSalary: '',
+    expectedSalary: '',
+    age: '',
     country: '',
-    bio: '',
+    city: '',
+    postcode: '',
+    address: '',
+    description: '',
     facebook: '',
     twitter: '',
     linkedin: '',
+    whatsapp: '',
     instagram: '',
+    pinterest: '',
+    tumblr: '',
+    youtube: ''
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -56,7 +66,7 @@ const CandidateProfile = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="section-full p-t120 p-b90 site-bg-white">
         <div className="section-full bg-white content-inner-2">
           <div className="container">
@@ -69,29 +79,47 @@ const CandidateProfile = () => {
                   <form onSubmit={handleSubmit}>
                     <div className="panel panel-default">
                       <div className="panel-heading wt-panel-heading p-a20">
-                        <h4 className="panel-tittle m-a0">Personal Details</h4>
+                        <h4 className="panel-tittle m-a0">Basic Informations</h4>
                       </div>
                       <div className="panel-body wt-panel-body p-a20 m-b30">
                         <div className="row">
                           <div className="col-xl-6 col-lg-6 col-md-12">
                             <div className="form-group">
-                              <label>Full Name</label>
+                              <label>Your Name</label>
                               <div className="ls-inputicon-box">
                                 <input
                                   className="form-control"
-                                  name="fullName"
+                                  name="name"
                                   type="text"
                                   placeholder="Devid Smith"
-                                  value={formData.fullName}
+                                  value={formData.name}
                                   onChange={handleInputChange}
                                 />
                                 <i className="fs-input-icon fa fa-user"></i>
                               </div>
                             </div>
                           </div>
+
                           <div className="col-xl-6 col-lg-6 col-md-12">
                             <div className="form-group">
-                              <label>Your Email</label>
+                              <label>Phone</label>
+                              <div className="ls-inputicon-box">
+                                <input
+                                  className="form-control"
+                                  name="phone"
+                                  type="text"
+                                  placeholder="(251) 1234-456-7890"
+                                  value={formData.phone}
+                                  onChange={handleInputChange}
+                                />
+                                <i className="fs-input-icon fa fa-phone-alt"></i>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="col-xl-6 col-lg-6 col-md-12">
+                            <div className="form-group">
+                              <label>Email Address</label>
                               <div className="ls-inputicon-box">
                                 <input
                                   className="form-control"
@@ -105,22 +133,7 @@ const CandidateProfile = () => {
                               </div>
                             </div>
                           </div>
-                          <div className="col-xl-6 col-lg-6 col-md-12">
-                            <div className="form-group">
-                              <label>Phone</label>
-                              <div className="ls-inputicon-box">
-                                <input
-                                  className="form-control"
-                                  name="phone"
-                                  type="text"
-                                  placeholder="(251) 1234-456-7890"
-                                  value={formData.phone}
-                                  onChange={handleInputChange}
-                                />
-                                <i className="fs-input-icon fas fa-phone-alt"></i>
-                              </div>
-                            </div>
-                          </div>
+
                           <div className="col-xl-6 col-lg-6 col-md-12">
                             <div className="form-group">
                               <label>Website</label>
@@ -137,71 +150,127 @@ const CandidateProfile = () => {
                               </div>
                             </div>
                           </div>
+
                           <div className="col-xl-6 col-lg-6 col-md-12">
                             <div className="form-group">
-                              <label>Address</label>
+                              <label>Qualification</label>
                               <div className="ls-inputicon-box">
                                 <input
                                   className="form-control"
-                                  name="address"
+                                  name="qualification"
                                   type="text"
-                                  placeholder="1363-1385 Sunset Blvd Los Angeles, CA 90026, USA"
-                                  value={formData.address}
+                                  placeholder="BTech"
+                                  value={formData.qualification}
                                   onChange={handleInputChange}
                                 />
-                                <i className="fs-input-icon fa fa-home"></i>
+                                <i className="fs-input-icon fa fa-user-graduate"></i>
                               </div>
                             </div>
                           </div>
+
                           <div className="col-xl-6 col-lg-6 col-md-12">
                             <div className="form-group">
-                              <label>City</label>
+                              <label>Language</label>
                               <div className="ls-inputicon-box">
                                 <input
                                   className="form-control"
-                                  name="city"
+                                  name="language"
                                   type="text"
-                                  placeholder="Los Angeles"
-                                  value={formData.city}
+                                  placeholder="e.x English, Spanish"
+                                  value={formData.language}
                                   onChange={handleInputChange}
                                 />
-                                <i className="fs-input-icon fa fa-building"></i>
+                                <i className="fs-input-icon fa fa-language"></i>
                               </div>
                             </div>
                           </div>
+
                           <div className="col-xl-6 col-lg-6 col-md-12">
                             <div className="form-group">
-                              <label>State</label>
+                              <label>Job Category</label>
                               <div className="ls-inputicon-box">
                                 <input
                                   className="form-control"
-                                  name="state"
+                                  name="jobCategory"
                                   type="text"
-                                  placeholder="California"
-                                  value={formData.state}
+                                  placeholder="IT & Software"
+                                  value={formData.jobCategory}
                                   onChange={handleInputChange}
                                 />
-                                <i className="fs-input-icon fa fa-map-marker-alt"></i>
+                                <i className="fs-input-icon fa fa-border-all"></i>
                               </div>
                             </div>
                           </div>
+
                           <div className="col-xl-6 col-lg-6 col-md-12">
                             <div className="form-group">
-                              <label>Zip</label>
+                              <label>Experience</label>
                               <div className="ls-inputicon-box">
                                 <input
                                   className="form-control"
-                                  name="zip"
+                                  name="experience"
                                   type="text"
-                                  placeholder="90026"
-                                  value={formData.zip}
+                                  placeholder="05 Years"
+                                  value={formData.experience}
                                   onChange={handleInputChange}
                                 />
-                                <i className="fs-input-icon fa fa-map-pin"></i>
+                                <i className="fs-input-icon fa fa-user-edit"></i>
                               </div>
                             </div>
                           </div>
-                          <div className="col-xl-6 col-lg-6 col-md-12">
+
+                          <div className="col-xl-4 col-lg-6 col-md-12">
+                            <div className="form-group">
+                              <label>Current Salary</label>
+                              <div className="ls-inputicon-box">
+                                <input
+                                  className="form-control"
+                                  name="currentSalary"
+                                  type="text"
+                                  placeholder="65K"
+                                  value={formData.currentSalary}
+                                  onChange={handleInputChange}
+                                />
+                                <i className="fs-input-icon fa fa-dollar-sign"></i>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="col-xl-4 col-lg-6 col-md-12">
+                            <div className="form-group">
+                              <label>Expected Salary</label>
+                              <div className="ls-inputicon-box">
+                                <input
+                                  className="form-control"
+                                  name="expectedSalary"
+                                  type="text"
+                                  placeholder="75K"
+                                  value={formData.expectedSalary}
+                                  onChange={handleInputChange}
+                                />
+                                <i className="fs-input-icon fa fa-dollar-sign"></i>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="col-xl-4 col-lg-12 col-md-12">
+                            <div className="form-group">
+                              <label>Age</label>
+                              <div className="ls-inputicon-box">
+                                <input
+                                  className="form-control"
+                                  name="age"
+                                  type="text"
+                                  placeholder="35 Years"
+                                  value={formData.age}
+                                  onChange={handleInputChange}
+                                />
+                                <i className="fs-input-icon fa fa-child"></i>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="col-xl-4 col-lg-6 col-md-12">
                             <div className="form-group">
                               <label>Country</label>
                               <div className="ls-inputicon-box">
@@ -213,21 +282,79 @@ const CandidateProfile = () => {
                                   value={formData.country}
                                   onChange={handleInputChange}
                                 />
-                                <i className="fs-input-icon fa fa-flag"></i>
+                                <i className="fs-input-icon fa fa-globe-americas"></i>
                               </div>
                             </div>
                           </div>
+
+                          <div className="col-xl-4 col-lg-6 col-md-12">
+                            <div className="form-group">
+                              <label>City</label>
+                              <div className="ls-inputicon-box">
+                                <input
+                                  className="form-control"
+                                  name="city"
+                                  type="text"
+                                  placeholder="Texas"
+                                  value={formData.city}
+                                  onChange={handleInputChange}
+                                />
+                                <i className="fs-input-icon fa fa-globe-americas"></i>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="col-xl-4 col-lg-12 col-md-12">
+                            <div className="form-group">
+                              <label>Postcode</label>
+                              <div className="ls-inputicon-box">
+                                <input
+                                  className="form-control"
+                                  name="postcode"
+                                  type="text"
+                                  placeholder="75462"
+                                  value={formData.postcode}
+                                  onChange={handleInputChange}
+                                />
+                                <i className="fs-input-icon fas fa-map-pin"></i>
+                              </div>
+                            </div>
+                          </div>
+
                           <div className="col-xl-12 col-lg-12 col-md-12">
+                            <div className="form-group">
+                              <label>Full Address</label>
+                              <div className="ls-inputicon-box">
+                                <input
+                                  className="form-control"
+                                  name="address"
+                                  type="text"
+                                  placeholder="1363-1385 Sunset Blvd Angeles, CA 90026 ,USA"
+                                  value={formData.address}
+                                  onChange={handleInputChange}
+                                />
+                                <i className="fs-input-icon fas fa-map-marker-alt"></i>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="col-md-12">
                             <div className="form-group">
                               <label>Description</label>
                               <textarea
                                 className="form-control"
-                                name="bio"
+                                name="description"
                                 rows={3}
-                                placeholder="Greetings! I am Devid Smith, a professional UI/UX Designer with 2 years of experience. I am a passionate UI/UX Designer with a strong background in creating beautiful and functional user interfaces."
-                                value={formData.bio}
+                                placeholder="Greetings! when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries."
+                                value={formData.description}
                                 onChange={handleInputChange}
                               ></textarea>
+                            </div>
+                          </div>
+
+                          <div className="col-lg-12 col-md-12">
+                            <div className="text-left">
+                              <button type="submit" className="site-button">Save Changes</button>
                             </div>
                           </div>
                         </div>
@@ -240,12 +367,12 @@ const CandidateProfile = () => {
                       </div>
                       <div className="panel-body wt-panel-body p-a20 m-b30">
                         <div className="row">
-                          <div className="col-xl-6 col-lg-6 col-md-12">
+                          <div className="col-xl-4 col-lg-6 col-md-12">
                             <div className="form-group">
                               <label>Facebook</label>
                               <div className="ls-inputicon-box">
                                 <input
-                                  className="form-control"
+                                  className="form-control wt-form-control"
                                   name="facebook"
                                   type="text"
                                   placeholder="https://www.facebook.com/"
@@ -256,12 +383,13 @@ const CandidateProfile = () => {
                               </div>
                             </div>
                           </div>
-                          <div className="col-xl-6 col-lg-6 col-md-12">
+
+                          <div className="col-xl-4 col-lg-6 col-md-12">
                             <div className="form-group">
                               <label>Twitter</label>
                               <div className="ls-inputicon-box">
                                 <input
-                                  className="form-control"
+                                  className="form-control wt-form-control"
                                   name="twitter"
                                   type="text"
                                   placeholder="https://twitter.com/"
@@ -272,15 +400,16 @@ const CandidateProfile = () => {
                               </div>
                             </div>
                           </div>
-                          <div className="col-xl-6 col-lg-6 col-md-12">
+
+                          <div className="col-xl-4 col-lg-6 col-md-12">
                             <div className="form-group">
                               <label>Linkedin</label>
                               <div className="ls-inputicon-box">
                                 <input
-                                  className="form-control"
+                                  className="form-control wt-form-control"
                                   name="linkedin"
                                   type="text"
-                                  placeholder="https://www.linkedin.com/"
+                                  placeholder="https://in.linkedin.com/"
                                   value={formData.linkedin}
                                   onChange={handleInputChange}
                                 />
@@ -288,12 +417,30 @@ const CandidateProfile = () => {
                               </div>
                             </div>
                           </div>
-                          <div className="col-xl-6 col-lg-6 col-md-12">
+
+                          <div className="col-xl-4 col-lg-6 col-md-12">
+                            <div className="form-group">
+                              <label>Whatsapp</label>
+                              <div className="ls-inputicon-box">
+                                <input
+                                  className="form-control wt-form-control"
+                                  name="whatsapp"
+                                  type="text"
+                                  placeholder="https://www.whatsapp.com/"
+                                  value={formData.whatsapp}
+                                  onChange={handleInputChange}
+                                />
+                                <i className="fs-input-icon fab fa-whatsapp"></i>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="col-xl-4 col-lg-6 col-md-12">
                             <div className="form-group">
                               <label>Instagram</label>
                               <div className="ls-inputicon-box">
                                 <input
-                                  className="form-control"
+                                  className="form-control wt-form-control"
                                   name="instagram"
                                   type="text"
                                   placeholder="https://www.instagram.com/"
@@ -304,153 +451,60 @@ const CandidateProfile = () => {
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
 
-                    <div className="panel panel-default">
-                      <div className="panel-heading wt-panel-heading p-a20">
-                        <h4 className="panel-tittle m-a0">Change Password</h4>
-                      </div>
-                      <div className="panel-body wt-panel-body p-a20 m-b30">
-                        <div className="row">
-                          <div className="col-xl-6 col-lg-6 col-md-12">
+                          <div className="col-xl-4 col-lg-6 col-md-12">
                             <div className="form-group">
-                              <label>Old Password</label>
+                              <label>Pinterest</label>
                               <div className="ls-inputicon-box">
                                 <input
-                                  className="form-control"
-                                  name="oldPassword"
-                                  type="password"
-                                  placeholder="********"
-                                />
-                                <i className="fs-input-icon fas fa-lock"></i>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-xl-6 col-lg-6 col-md-12">
-                            <div className="form-group">
-                              <label>New Password</label>
-                              <div className="ls-inputicon-box">
-                                <input
-                                  className="form-control"
-                                  name="newPassword"
-                                  type="password"
-                                  placeholder="********"
-                                />
-                                <i className="fs-input-icon fas fa-lock"></i>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-xl-6 col-lg-6 col-md-12">
-                            <div className="form-group">
-                              <label>Confirm Password</label>
-                              <div className="ls-inputicon-box">
-                                <input
-                                  className="form-control"
-                                  name="confirmPassword"
-                                  type="password"
-                                  placeholder="********"
-                                />
-                                <i className="fs-input-icon fas fa-lock"></i>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="panel panel-default">
-                      <div className="panel-heading wt-panel-heading p-a20">
-                        <h4 className="panel-tittle m-a0">Profile Privacy</h4>
-                      </div>
-                      <div className="panel-body wt-panel-body p-a20 m-b30">
-                        <div className="row">
-                          <div className="col-xl-6 col-lg-6 col-md-12">
-                            <div className="form-group">
-                              <label>Profile Visibility</label>
-                              <div className="ls-inputicon-box">
-                                <select className="wt-select-box selectpicker" data-live-search="true" title="" id="s-category" data-bv-field="size">
-                                  <option className="bs-title-option" value="">Public</option>
-                                  <option>Private</option>
-                                  <option>Protected</option>
-                                </select>
-                                <i className="fs-input-icon fa fa-eye"></i>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-xl-6 col-lg-6 col-md-12">
-                            <div className="form-group">
-                              <label>Show Profile</label>
-                              <div className="ls-inputicon-box">
-                                <select className="wt-select-box selectpicker" data-live-search="true" title="" id="s-category" data-bv-field="size">
-                                  <option className="bs-title-option" value="">Show Profile</option>
-                                  <option>Hide Profile</option>
-                                </select>
-                                <i className="fs-input-icon fa fa-user"></i>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="panel panel-default">
-                      <div className="panel-heading wt-panel-heading p-a20">
-                        <h4 className="panel-tittle m-a0">Deactivate Account</h4>
-                      </div>
-                      <div className="panel-body wt-panel-body p-a20 m-b30">
-                        <div className="row">
-                          <div className="col-xl-12 col-lg-12 col-md-12">
-                            <div className="form-group">
-                              <label>Deactivate Account</label>
-                              <div className="ls-inputicon-box">
-                                <input
-                                  className="form-control"
-                                  name="deactivate"
+                                  className="form-control wt-form-control"
+                                  name="pinterest"
                                   type="text"
-                                  placeholder="Deactivate Account"
+                                  placeholder="https://in.pinterest.com/"
+                                  value={formData.pinterest}
+                                  onChange={handleInputChange}
                                 />
-                                <i className="fs-input-icon fa fa-ban"></i>
+                                <i className="fs-input-icon fab fa-pinterest-p"></i>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
 
-                    <div className="panel panel-default">
-                      <div className="panel-heading wt-panel-heading p-a20">
-                        <h4 className="panel-tittle m-a0">Delete Account</h4>
-                      </div>
-                      <div className="panel-body wt-panel-body p-a20 m-b30">
-                        <div className="row">
-                          <div className="col-xl-12 col-lg-12 col-md-12">
+                          <div className="col-xl-4 col-lg-6 col-md-12">
                             <div className="form-group">
-                              <label>Delete Account</label>
+                              <label>Tumblr</label>
                               <div className="ls-inputicon-box">
                                 <input
-                                  className="form-control"
-                                  name="delete"
+                                  className="form-control wt-form-control"
+                                  name="tumblr"
                                   type="text"
-                                  placeholder="Delete Account"
+                                  placeholder="https://www.tumblr.com/"
+                                  value={formData.tumblr}
+                                  onChange={handleInputChange}
                                 />
-                                <i className="fs-input-icon fa fa-trash"></i>
+                                <i className="fs-input-icon fab fa-tumblr"></i>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    </div>
 
-                    <div className="panel panel-default">
-                      <div className="panel-heading wt-panel-heading p-a20">
-                        <h4 className="panel-tittle m-a0">Save Changes</h4>
-                      </div>
-                      <div className="panel-body wt-panel-body p-a20 m-b30">
-                        <div className="row">
-                          <div className="col-xl-12 col-lg-12 col-md-12">
+                          <div className="col-xl-4 col-lg-6 col-md-12">
                             <div className="form-group">
+                              <label>Youtube</label>
+                              <div className="ls-inputicon-box">
+                                <input
+                                  className="form-control wt-form-control"
+                                  name="youtube"
+                                  type="text"
+                                  placeholder="https://www.youtube.com/"
+                                  value={formData.youtube}
+                                  onChange={handleInputChange}
+                                />
+                                <i className="fs-input-icon fab fa-youtube"></i>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="col-lg-12 col-md-12">
+                            <div className="text-left">
                               <button type="submit" className="site-button">Save Changes</button>
                             </div>
                           </div>
