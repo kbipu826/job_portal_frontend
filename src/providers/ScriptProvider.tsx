@@ -15,179 +15,174 @@ export default function ScriptProvider() {
   const [jQueryReady, setJQueryReady] = useState(false);
   const [pluginsReady, setPluginsReady] = useState(false);
 
-  // ✅ 1. Load jQuery first and ensure it's globally available
-  useEffect(() => {
-    const loadJQuery = async () => {
-      try {
-        // Load jQuery
-        await loadScript('/js/jquery-3.6.0.min.js');
-        
-        // Wait for jQuery to be fully initialized and globally available
-        await new Promise<void>((resolve) => {
-          const checkJQuery = setInterval(() => {
-            if (window.jQuery && window.$ && typeof window.jQuery === 'function') {
-              // Ensure jQuery is properly initialized
-              window.jQuery.noConflict();
-              clearInterval(checkJQuery);
-              resolve();
-            }
-          }, 100);
-        });
-
-        // Double check jQuery is available
-        if (!window.jQuery || !window.$) {
-          throw new Error('jQuery failed to initialize properly');
-        }
-
-        console.log('✅ jQuery loaded and initialized');
-        setJQueryReady(true);
-      } catch (e) {
-        console.error('❌ Failed to load jQuery', e);
-      }
-    };
-
-    loadJQuery();
-  }, []);
-
-  // ✅ 2. Load Bootstrap and core dependencies after jQuery
-  useEffect(() => {
-    if (!jQueryReady) return;
-
-    const loadCoreScripts = async () => {
-      try {
-        // Ensure jQuery is still available
-        if (!window.jQuery) {
-          throw new Error('jQuery not available');
-        }
-
-        await loadScript('/js/popper.min.js');
-        await loadScript('/js/bootstrap.min.js');
-        console.log('✅ Core bootstrap scripts loaded');
-      } catch (e) {
-        console.error('❌ Failed to load core scripts', e);
-      }
-    };
-
-    loadCoreScripts();
-  }, [jQueryReady]);
-
-  // ✅ 3. Load jQuery plugins after core scripts
-  useEffect(() => {
-    if (!jQueryReady) return;
-
-    const loadPlugins = async () => {
-      try {
-        // Ensure jQuery is still available
-        if (!window.jQuery) {
-          throw new Error('jQuery not available');
-        }
-
-        // Load plugins in correct order
-        const plugins = [
-          '/js/owl.carousel.min.js',
-          '/js/jquery.magnific-popup.min.js',
-          '/js/lc_lightbox.lite.js',
-          '/js/bootstrap-select.min.js',
-          '/js/jquery.dataTables.min.js',
-          '/js/dataTables.bootstrap5.min.js',
-          '/js/select.bootstrap5.min.js',
-          '/js/waypoints.min.js',
-          '/js/jquery.waypoints.min.js',
-          '/js/waypoints-sticky.min.js',
-          '/js/counterup.min.js',
-          '/js/isotope.pkgd.min.js',
-          '/js/imagesloaded.pkgd.min.js',
-          '/js/theia-sticky-sidebar.js',
-          '/js/dropzone.js',
-          '/js/jquery.scrollbar.min.js',
-          '/js/bootstrap-datepicker.js',
-          '/js/chart.js',
-          '/js/anm.js',
-          '/js/bootstrap-slider.min.js',
-          '/js/swiper-bundle.min.js',
-          '/js/switcher.js'
-        ];
-
-        for (const plugin of plugins) {
-          await loadScript(plugin);
-          // Add a small delay between plugin loads
-          await new Promise(resolve => setTimeout(resolve, 50));
-        }
-
-        console.log('✅ All jQuery plugins loaded');
-        setPluginsReady(true);
-      } catch (e) {
-        console.error('❌ Failed to load jQuery plugins', e);
-      }
-    };
-
-    loadPlugins();
-  }, [jQueryReady]);
-
-  // ✅ 4. Load custom.js last
-  useEffect(() => {
-    if (!pluginsReady) return;
-
-    const loadCustom = async () => {
-      try {
-        // Ensure jQuery is still available
-        if (!window.jQuery) {
-          throw new Error('jQuery not available');
-        }
-
-        await loadScript('/js/custom.js');
-        console.log('✅ custom.js loaded');
-      } catch (e) {
-        console.error('❌ Failed to load custom.js', e);
-      }
-    };
-
-    loadCustom();
-  }, [pluginsReady]);
-
-  // 📦 Helper: load script dynamically with retry
-  const loadScript = (src: string, retries = 3): Promise<void> => {
-    return new Promise((resolve, reject) => {
-      const existing = document.querySelector(`script[src="${src}"]`);
-      if (existing) {
-        resolve();
-        return;
-      }
-
-      const script = document.createElement('script');
-      script.src = src;
-      script.async = false;
-      
-      script.onload = () => {
-        // Verify script loaded properly
-        if (src.includes('jquery') && !window.jQuery) {
-          if (retries > 0) {
-            script.remove();
-            setTimeout(() => {
-              loadScript(src, retries - 1).then(resolve).catch(reject);
-            }, 1000);
-          } else {
-            reject(new Error(`Failed to load ${src} after ${retries} retries`));
-          }
-        } else {
-          resolve();
-        }
-      };
-      
-      script.onerror = (err) => {
-        if (retries > 0) {
-          script.remove();
-          setTimeout(() => {
-            loadScript(src, retries - 1).then(resolve).catch(reject);
-          }, 1000);
-        } else {
-          reject(err);
-        }
-      };
-
-      document.body.appendChild(script);
-    });
+  // Handle jQuery initialization
+  const handleJQueryLoad = () => {
+    if (window.jQuery) {
+      window.jQuery.noConflict();
+      setJQueryReady(true);
+      console.log('✅ jQuery loaded and initialized');
+    }
   };
 
-  return null;
+  // Handle plugin initialization
+  const handlePluginsLoad = () => {
+    if (window.jQuery) {
+      setPluginsReady(true);
+      console.log('✅ All plugins loaded');
+    }
+  };
+
+  return (
+    <>
+      {/* Load jQuery first */}
+      <Script
+        src="/js/jquery-3.6.0.min.js"
+        strategy="beforeInteractive"
+        onLoad={handleJQueryLoad}
+        onError={(e) => console.error('❌ Failed to load jQuery', e)}
+      />
+
+      {/* Load core dependencies after jQuery */}
+      {jQueryReady && (
+        <>
+          <Script
+            src="/js/popper.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Popper', e)}
+          />
+          <Script
+            src="/js/bootstrap.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Bootstrap', e)}
+          />
+        </>
+      )}
+
+      {/* Load jQuery plugins after core dependencies */}
+      {jQueryReady && (
+        <>
+          <Script
+            src="/js/owl.carousel.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Owl Carousel', e)}
+          />
+          <Script
+            src="/js/jquery.magnific-popup.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Magnific Popup', e)}
+          />
+          <Script
+            src="/js/lc_lightbox.lite.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Lightbox', e)}
+          />
+          <Script
+            src="/js/bootstrap-select.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Bootstrap Select', e)}
+          />
+          <Script
+            src="/js/jquery.dataTables.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load DataTables', e)}
+          />
+          <Script
+            src="/js/dataTables.bootstrap5.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load DataTables Bootstrap', e)}
+          />
+          <Script
+            src="/js/select.bootstrap5.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Select Bootstrap', e)}
+          />
+          <Script
+            src="/js/waypoints.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Waypoints', e)}
+          />
+          <Script
+            src="/js/jquery.waypoints.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load jQuery Waypoints', e)}
+          />
+          <Script
+            src="/js/waypoints-sticky.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Waypoints Sticky', e)}
+          />
+          <Script
+            src="/js/counterup.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load CounterUp', e)}
+          />
+          <Script
+            src="/js/isotope.pkgd.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Isotope', e)}
+          />
+          <Script
+            src="/js/imagesloaded.pkgd.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load ImagesLoaded', e)}
+          />
+          <Script
+            src="/js/theia-sticky-sidebar.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Theia Sticky Sidebar', e)}
+          />
+          <Script
+            src="/js/dropzone.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Dropzone', e)}
+          />
+          <Script
+            src="/js/jquery.scrollbar.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Scrollbar', e)}
+          />
+          <Script
+            src="/js/bootstrap-datepicker.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Datepicker', e)}
+          />
+          <Script
+            src="/js/chart.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Chart', e)}
+          />
+          <Script
+            src="/js/anm.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load ANM', e)}
+          />
+          <Script
+            src="/js/bootstrap-slider.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Bootstrap Slider', e)}
+          />
+          <Script
+            src="/js/swiper-bundle.min.js"
+            strategy="afterInteractive"
+            onError={(e) => console.error('❌ Failed to load Swiper', e)}
+          />
+          <Script
+            src="/js/switcher.js"
+            strategy="afterInteractive"
+            onLoad={handlePluginsLoad}
+            onError={(e) => console.error('❌ Failed to load Switcher', e)}
+          />
+        </>
+      )}
+
+      {/* Load custom.js last */}
+      {pluginsReady && (
+        <Script
+          src="/js/custom.js"
+          strategy="afterInteractive"
+          onError={(e) => console.error('❌ Failed to load custom.js', e)}
+        />
+      )}
+    </>
+  );
 }
