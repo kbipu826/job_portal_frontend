@@ -1,105 +1,104 @@
 'use client';
 
-import Script from "next/script";
-import { useEffect, useState } from "react";
+import Script from 'next/script';
+import { useEffect, useState } from 'react';
 
 export default function ScriptProvider() {
-  const [scriptsLoaded, setScriptsLoaded] = useState(false);
+  const [jQueryReady, setJQueryReady] = useState(false);
+  const [pluginsReady, setPluginsReady] = useState(false);
 
-  // Core scripts that need to load first
-  const coreScripts = [
-    { src: "js/jquery-3.6.0.min.js", strategy: "beforeInteractive" },
-    { src: "js/popper.min.js", strategy: "beforeInteractive" },
-    { src: "js/bootstrap.min.js", strategy: "beforeInteractive" }
-  ];
-
-  // DataTables related scripts in correct order
-  const dataTableScripts = [
-    { src: "js/jquery.dataTables.min.js", strategy: "afterInteractive" },
-    { src: "js/dataTables.bootstrap5.min.js", strategy: "afterInteractive" }
-  ];
-
-  // Scripts that depend on waypoints need to load after it
-  const waypointsScripts = [
-    { src: "js/waypoints.min.js", strategy: "lazyOnload" },
-    { src: "js/waypoints-sticky.min.js", strategy: "lazyOnload" },
-    { src: "js/counterup.min.js", strategy: "lazyOnload" }
-  ];
-
-  // Other scripts that can load later
-  const otherScripts = [
-    { src: "js/magnific-popup.min.js", strategy: "lazyOnload" },
-    { src: "js/isotope.pkgd.min.js", strategy: "lazyOnload" },
-    { src: "js/imagesloaded.pkgd.min.js", strategy: "lazyOnload" },
-    // Moving owl.carousel before custom.js since it's a dependency
-    { src: "js/owl.carousel.min.js", strategy: "afterInteractive" },
-    { src: "js/theia-sticky-sidebar.js", strategy: "lazyOnload" },
-    { src: "js/lc_lightbox.lite.js", strategy: "lazyOnload" },
-    { src: "js/bootstrap-select.min.js", strategy: "afterInteractive" },
-    { src: "js/dropzone.js", strategy: "lazyOnload" },
-    { src: "js/jquery.scrollbar.js", strategy: "lazyOnload" },
-    { src: "js/bootstrap-datepicker.js", strategy: "lazyOnload" },
-    { src: "js/chart.js", strategy: "lazyOnload" },
-    { src: "js/anm.js", strategy: "lazyOnload" },
-    { src: "js/bootstrap-slider.min.js", strategy: "lazyOnload" },
-    { src: "js/swiper-bundle.min.js", strategy: "lazyOnload" },
-    { src: "js/custom.js", strategy: "lazyOnload" },
-    { src: "js/switcher.js", strategy: "lazyOnload" }
-  ];
-
+  // ✅ 1. Load jQuery and core scripts first
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setScriptsLoaded(true);
-    }, 100);
+    const loadCoreScripts = async () => {
+      try {
+        // jQuery
+        await loadScript('js/jquery-3.6.0.min.js');
+        console.log('✅ jQuery loaded');
+        // Bootstrap dependencies
+        await loadScript('js/popper.min.js');
+        await loadScript('js/bootstrap.min.js');
+        console.log('✅ Core bootstrap scripts loaded');
+        setJQueryReady(true);
+      } catch (e) {
+        console.error('❌ Failed to load core scripts', e);
+      }
+    };
 
-    return () => clearTimeout(timer);
+    loadCoreScripts();
   }, []);
 
-  return (
-    <>
-      {/* Load core scripts first */}
-      {coreScripts.map((script, index) => (
-        <Script 
-          key={`core-${index}`}
-          src={script.src}
-          strategy={script.strategy as "beforeInteractive" | "lazyOnload" | "afterInteractive" | "worker"}
-          onLoad={() => console.log(`Core script loaded: ${script.src}`)}
-          onError={(e) => console.error(`Core script failed to load: ${script.src}`, e)}
-        />
-      ))}
+  // ✅ 2. Load all jQuery plugins after jQuery is ready
+  useEffect(() => {
+    if (!jQueryReady) return;
 
-      {/* Load DataTables scripts after core */}
-      {dataTableScripts.map((script, index) => (
-        <Script
-          key={`datatable-${index}`}
-          src={script.src}
-          strategy={script.strategy as "beforeInteractive" | "lazyOnload" | "afterInteractive" | "worker"}
-          onLoad={() => console.log(`DataTable script loaded: ${script.src}`)}
-          onError={(e) => console.error(`DataTable script failed to load: ${script.src}`, e)}
-        />
-      ))}
+    const loadPlugins = async () => {
+      try {
+        // jQuery plugins (in correct order)
+        await loadScript('js/owl.carousel.min.js');
+        await loadScript('js/jquery.dataTables.min.js');
+        await loadScript('js/dataTables.bootstrap5.min.js');
+        await loadScript('js/bootstrap-select.min.js');
+        await loadScript('js/waypoints.min.js');
+        await loadScript('js/jquery.waypoints.min.js');
+        await loadScript('js/waypoints-sticky.min.js');
+        await loadScript('js/counterup.min.js');
+        await loadScript('js/isotope.pkgd.min.js');
+        await loadScript('js/imagesloaded.pkgd.min.js');
+        await loadScript('js/magnific-popup.min.js');
+        await loadScript('js/theia-sticky-sidebar.js');
+        await loadScript('js/lc_lightbox.lite.js');
+        await loadScript('js/dropzone.js');
+        await loadScript('js/jquery.scrollbar.js');
+        await loadScript('js/bootstrap-datepicker.js');
+        await loadScript('js/chart.js');
+        await loadScript('js/anm.js');
+        await loadScript('js/bootstrap-slider.min.js');
+        await loadScript('js/swiper-bundle.min.js');
+        await loadScript('js/switcher.js');
 
-      {/* Load waypoints and dependent scripts */}
-      {waypointsScripts.map((script, index) => (
-        <Script
-          key={`waypoints-${index}`}
-          src={script.src}
-          strategy={script.strategy as "beforeInteractive" | "lazyOnload" | "afterInteractive" | "worker"}
-          onLoad={() => console.log(`Waypoints script loaded: ${script.src}`)}
-          onError={(e) => console.error(`Waypoints script failed to load: ${script.src}`, e)}
-        />
-      ))}
+        console.log('✅ All jQuery plugins loaded');
+        setPluginsReady(true);
+      } catch (e) {
+        console.error('❌ Failed to load jQuery plugins', e);
+      }
+    };
 
-      {/* Load other scripts last */}
-      {otherScripts.map((script, index) => (
-        <Script
-          key={`other-${index}`}
-          src={script.src}
-          strategy={script.strategy as "beforeInteractive" | "lazyOnload" | "afterInteractive" | "worker"}
-          onLoad={() => console.log(`Script loaded: ${script.src}`)}
-          onError={(e) => console.error(`Script failed to load: ${script.src}`, e)}
-        />
-      ))}
-    </>
-  );
+    loadPlugins();
+  }, [jQueryReady]);
+
+  // ✅ 3. Load custom.js last
+  useEffect(() => {
+    if (!pluginsReady) return;
+
+    const loadCustom = async () => {
+      try {
+        await loadScript('js/custom.js');
+        console.log('✅ custom.js loaded');
+      } catch (e) {
+        console.error('❌ Failed to load custom.js', e);
+      }
+    };
+
+    loadCustom();
+  }, [pluginsReady]);
+
+  // 📦 Helper: load script dynamically
+  const loadScript = (src: string): Promise<void> => {
+    return new Promise((resolve, reject) => {
+      const existing = document.querySelector(`script[src="${src}"]`);
+      if (existing) {
+        resolve();
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = src;
+      script.async = false;
+      script.onload = () => resolve();
+      script.onerror = (err) => reject(err);
+      document.body.appendChild(script);
+    });
+  };
+
+  return null; // All handled via dynamic injection
 }

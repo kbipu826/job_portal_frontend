@@ -5,6 +5,7 @@ import React from 'react';
 const Dashboard = () => {
   const handleLogout = () => {
     signOut();
+    
   };
   return (
     <div className="page-wraper">

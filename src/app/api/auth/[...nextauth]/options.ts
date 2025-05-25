@@ -12,48 +12,50 @@ export const authOptions: NextAuthOptions = {
                 password: { label: 'Password', type: 'password' },
             },
             async authorize(credentials) {
-                console.log(credentials);
                 if (!credentials?.login || !credentials?.password) {
                     throw new Error(JSON.stringify({
                         statusCode: 400,
                         message: "Login and password are required"
                     }));
                 }
-                console.log(credentials);
-                const response = await authService.login(
-                    {
+
+                try {
+                    const response = await authService.login({
                         login: credentials.login,
                         password: credentials.password
+                    });
+
+                    if (response.success && response.data) {
+                        const userData = response.data as AuthResponse['data'];
+                        if (!userData) return null;
+
+                        return {
+                            id: userData.user.id!,
+                            username: userData.user.username,
+                            email: userData.user.email,
+                            phone: userData.user.phone,
+                            user_type_id: userData.user.user_type_id,
+                            is_active: userData.user.is_active,
+                            updated_at: userData.user.updated_at!,
+                            created_at: userData.user.created_at!,
+                            user_type: {
+                                id: userData.user.user_type?.id || 0,
+                                name: userData.user.user_type?.name || ''
+                            },
+                            token: {
+                                accessToken: userData.token.accessToken
+                            }
+                        } as User;
                     }
-                );
-                console.log(response);
-                
-                if (response.success && response.data) {
-                    const userData = response.data as AuthResponse['data'];
-                    if (!userData) return null;
 
-                    return {
-                        id: userData.user.id!,
-                        username: userData.user.username,
-                        email: userData.user.email,
-                        phone: userData.user.phone,
-                        user_type_id: userData.user.user_type_id,
-                        is_active: userData.user.is_active,
-                        updated_at: userData.user.updated_at!,
-                        created_at: userData.user.created_at!,
-                        user_type: {
-                            id: userData.user.user_type?.id || 0,
-                            name: userData.user.user_type?.name || ''
-                        },
-                        token: {
-                            accessToken: userData.token.accessToken
-                        }
-                    } as User;
+                    throw new Error(JSON.stringify({
+                        message: response.message
+                    }));
+                } catch (error: any) {
+                    throw new Error(JSON.stringify({
+                        message: error.message || 'Authentication failed'
+                    }));
                 }
-
-                throw new Error(JSON.stringify({
-                    message: response.message
-                }));
             }
         }),
     ],
@@ -71,6 +73,12 @@ export const authOptions: NextAuthOptions = {
     },
     pages: {
         signIn: '/',
+        error: '/login',
+    },
+    session: {
+        strategy: 'jwt',
+        maxAge: 24 * 60 * 60, // 24 hours
     },
     secret: process.env.NEXTAUTH_SECRET,
+    debug: process.env.NODE_ENV === 'development',
 };
