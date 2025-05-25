@@ -1559,3 +1559,96 @@ All JavaScript fuctions Start
 
 
 })(window.jQuery);
+
+// Initialize all components after document ready
+$(document).ready(function() {
+    // Initialize Owl Carousel
+    if($('.owl-carousel').length) {
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 30,
+            nav: true,
+            dots: false,
+            autoplay: true,
+            smartSpeed: 1000,
+            responsive: {
+                0: { items: 1 },
+                576: { items: 2 },
+                768: { items: 3 },
+                992: { items: 4 },
+                1200: { items: 5 }
+            }
+        });
+    }
+
+    // Initialize Magnific Popup
+    if($('.mfp-gallery').length) {
+        $('.mfp-gallery').magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            closeBtnInside: false,
+            fixedContentPos: true,
+            mainClass: 'mfp-no-margins mfp-with-zoom',
+            image: {
+                verticalFit: true
+            },
+            zoom: {
+                enabled: true,
+                duration: 300
+            }
+        });
+    }
+
+    // Initialize Bootstrap Select
+    if($('.selectpicker').length) {
+        $('.selectpicker').selectpicker();
+    }
+
+    // Initialize DataTables
+    if($('.datatable').length) {
+        $('.datatable').DataTable({
+            responsive: true
+        });
+    }
+
+    // Initialize Dropzone
+    if($('.dropzone').length) {
+        Dropzone.autoDiscover = false;
+        $('.dropzone').dropzone({
+            url: '/upload',
+            maxFiles: 1,
+            acceptedFiles: '.pdf,.doc,.docx',
+            addRemoveLinks: true
+        });
+    }
+
+    // Initialize Scrollbar
+    if($('.scrollbar').length) {
+        $('.scrollbar').scrollbar();
+    }
+
+    // Initialize Datepicker
+    if($('.datepicker').length) {
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true
+        });
+    }
+
+    // Initialize Swiper
+    if($('.swiper-container').length) {
+        new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    }
+});

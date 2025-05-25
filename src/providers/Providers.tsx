@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { SessionProvider } from 'next-auth/react';
 import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
@@ -9,7 +10,7 @@ interface ProvidersProps {
   children: React.ReactNode;
 }
 
-export default function Providers({ children }: ProvidersProps) {
+const Providers = ({ children }: ProvidersProps) => {
   const [queryClient] = useState(() => new QueryClient({
     defaultOptions: {
       queries: {
@@ -36,4 +37,6 @@ export default function Providers({ children }: ProvidersProps) {
       </SessionProvider>
     </QueryClientProvider>
   );
-}
+};
+
+export default Providers;

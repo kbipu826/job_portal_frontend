@@ -7,63 +7,33 @@
   --border-color: #e5e5e5;
 }
 
-/* Font Face Declarations */
-@font-face {
-  font-family: 'Flaticon';
-  src: url('/fonts/flaticon.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+/* Icon Styles */
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: all 0.3s ease;
 }
 
-@font-face {
-  font-family: 'Feather';
-  src: url('/fonts/Feather.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+.icon-wrapper svg {
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+  font-size: large;
 }
 
-@font-face {
-  font-family: 'Font Awesome 5 Free';
-  font-style: normal;
-  font-weight: 900;
-  src: url('/fonts/fa-solid-900.woff2') format('woff2');
+.icon-wrapper:hover svg {
+  scale: 2;
 }
 
-@font-face {
-  font-family: 'Font Awesome 5 Brands';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/fa-brands-400.woff2') format('woff2');
+.me-2 {
+  margin-right: 0.5rem;
 }
 
-@font-face {
-  font-family: 'Font Awesome 5 Free';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/fa-regular-400.woff2') format('woff2');
-}
-
-/* Icon Classes */
-.flaticon:before {
-  font-family: 'Flaticon';
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.feather:before {
-  font-family: 'Feather';
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.ms-2 {
+  margin-left: 0.5rem;
 }
 
 body {
@@ -209,7 +179,6 @@ body {
   color: #ffffff;
 }
 
-
 @keyframes bounce {
   0%, 100% {
     transform: translateY(0);
@@ -228,44 +197,9 @@ body {
   }
 }
 
-
-
 @media (max-width: 1024px) {
   .hidden-lg {
     display: none !important;
   }
-}
-
-/* Icon Styles */
-.icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  /* background-color: var(--secondary-color); */
-  border-radius: 50%;
-  /* margin-bottom: 15px; */
-  transition: all 0.3s ease;
-}
-
-.icon-wrapper svg {
-  color: var(--primary-color);
-  transition: all 0.3s ease;
-  font-size: large;
-}
-
-
-
-.icon-wrapper:hover svg {
-  scale: 2;
-}
-
-.me-2 {
-  margin-right: 0.5rem;
-}
-
-.ms-2 {
-  margin-left: 0.5rem;
 }
 
