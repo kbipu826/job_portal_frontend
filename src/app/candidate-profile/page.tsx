@@ -57,7 +57,7 @@ const CandidateProfile = () => {
         </div>
       </div>
       
-      <div className="content-block">
+      <div className="section-full p-t120 p-b90 site-bg-white">
         <div className="section-full bg-white content-inner-2">
           <div className="container">
             <div className="row">
