@@ -35,19 +35,62 @@ const ScriptProvider = () => {
 
   return (
     <>
-      <Script src="/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
-      <Script src="/js/owl.carousel.min.js" strategy="afterInteractive" />
-      <Script src="/js/jquery.magnific-popup.min.js" strategy="afterInteractive" />
-      <Script src="/js/lc_lightbox.lite.js" strategy="afterInteractive" />
-      <Script src="/js/bootstrap-select.min.js" strategy="afterInteractive" />
-      <Script src="/js/jquery.dataTables.min.js" strategy="afterInteractive" />
-      <Script src="/js/dataTables.bootstrap5.min.js" strategy="afterInteractive" />
-      <Script src="/js/select.bootstrap5.min.js" strategy="afterInteractive" />
-      <Script src="/js/dropzone.js" strategy="afterInteractive" />
-      <Script src="/js/jquery.scrollbar.min.js" strategy="afterInteractive" />
-      <Script src="/js/bootstrap-datepicker.js" strategy="afterInteractive" />
-      <Script src="/js/swiper-bundle.min.js" strategy="afterInteractive" />
-      <Script src="/js/custom.js" strategy="afterInteractive" />
+      <Script 
+        src="/js/jquery.min.js"
+        strategy="beforeInteractive"
+      />
+      <Script 
+        src="/js/bootstrap.bundle.min.js" 
+        strategy="afterInteractive"
+      />
+      <Script 
+        src="/js/owl.carousel.min.js" 
+        strategy="afterInteractive"
+      />
+      <Script 
+        src="/js/jquery.magnific-popup.min.js" 
+        strategy="afterInteractive"
+      />
+      <Script 
+        src="/js/lc_lightbox.lite.js" 
+        strategy="afterInteractive"
+      />
+      <Script 
+        src="/js/bootstrap-select.min.js" 
+        strategy="afterInteractive"
+      />
+      <Script 
+        src="/js/jquery.dataTables.min.js" 
+        strategy="afterInteractive"
+      />
+      <Script 
+        src="/js/dataTables.bootstrap5.min.js" 
+        strategy="afterInteractive"
+      />
+      <Script 
+        src="/js/select.bootstrap5.min.js" 
+        strategy="afterInteractive"
+      />
+      <Script 
+        src="/js/dropzone.js" 
+        strategy="afterInteractive"
+      />
+      <Script 
+        src="/js/jquery.scrollbar.min.js" 
+        strategy="afterInteractive"
+      />
+      <Script 
+        src="/js/bootstrap-datepicker.js" 
+        strategy="afterInteractive"
+      />
+      <Script 
+        src="/js/swiper-bundle.min.js" 
+        strategy="afterInteractive"
+      />
+      <Script 
+        src="/js/custom.js" 
+        strategy="afterInteractive"
+      />
     </>
   );
 };
