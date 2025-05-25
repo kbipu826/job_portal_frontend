@@ -3,6 +3,18 @@
 import React from 'react';
 import Footer from '../../components/Footer/Footer';
 import Image from 'next/image';
+import { 
+  FiCheck, 
+  FiUpload,
+  FiUser,
+  FiBriefcase,
+  FiFileText,
+  FiHeadphones,
+  FiBarChart2,
+  FiTrendingUp,
+  FiMonitor,
+  FiCode
+} from 'react-icons/fi';
 import ClientCarousel from '../../components/ClientCarousel/ClientCarousel';
 
 const AboutPage = () => {
@@ -43,19 +55,19 @@ const AboutPage = () => {
               <div className="job-categories-style1 m-b30">
                 <div className="row">
                   {[
-                    { icon: 'flaticon-dashboard', jobs: '9,185', title: 'Business Development' },
-                    { icon: 'flaticon-project-management', jobs: '3,205', title: 'Project Management' },
-                    { icon: 'flaticon-note', jobs: '2,100', title: 'Content Writer' },
-                    { icon: 'flaticon-customer-support', jobs: '1,500', title: 'Customer Services' },
-                    { icon: 'flaticon-bars', jobs: '9,185', title: 'Finance' },
-                    { icon: 'flaticon-user', jobs: '3,205', title: 'Marketing' },
-                    { icon: 'flaticon-computer', jobs: '2,100', title: 'Design & Art' },
-                    { icon: 'flaticon-coding', jobs: '1,500', title: 'Web Development' }
+                    { icon: <FiTrendingUp size={24} />, jobs: '9,185', title: 'Business Development' },
+                    { icon: <FiBriefcase size={24} />, jobs: '3,205', title: 'Project Management' },
+                    { icon: <FiFileText size={24} />, jobs: '2,100', title: 'Content Writer' },
+                    { icon: <FiHeadphones size={24} />, jobs: '1,500', title: 'Customer Services' },
+                    { icon: <FiBarChart2 size={24} />, jobs: '9,185', title: 'Finance' },
+                    { icon: <FiTrendingUp size={24} />, jobs: '3,205', title: 'Marketing' },
+                    { icon: <FiMonitor size={24} />, jobs: '2,100', title: 'Design & Art' },
+                    { icon: <FiCode size={24} />, jobs: '1,500', title: 'Web Development' }
                   ].map((category, index) => (
                     <div key={index} className="col-lg-3 col-md-6">
                       <div className="job-categories-block-2 m-b30">
                         <div className="twm-media">
-                          <div className={category.icon}></div>
+                          <div className="icon-wrapper">{category.icon}</div>
                         </div>
                         <div className="twm-content">
                           <div className="twm-jobs-available">{category.jobs} Jobs</div>
@@ -86,10 +98,10 @@ const AboutPage = () => {
                   <h2 className="wt-title">Follow our steps we will help you.</h2>
                 </div>
                 <ul className="description-list">
-                  <li><i className="feather-check"></i> Trusted & Quality Job</li>
-                  <li><i className="feather-check"></i> International Job</li>
-                  <li><i className="feather-check"></i> No Extra Charge</li>
-                  <li><i className="feather-check"></i> Top Companies</li>
+                  <li><FiCheck className="me-2" /> Trusted & Quality Job</li>
+                  <li><FiCheck className="me-2" /> International Job</li>
+                  <li><FiCheck className="me-2" /> No Extra Charge</li>
+                  <li><FiCheck className="me-2" /> Top Companies</li>
                 </ul>
               </div>
               <div className="col-lg-8 col-md-12">
@@ -130,7 +142,7 @@ const AboutPage = () => {
                           <div className={`twm-w-pro-top bg-clr-${step.color}-light bg-${step.color}-light-shadow`}>
                             <span className={`twm-large-number text-clr-${step.color}`}>{step.number}</span>
                             <div className="twm-media">
-                              <span><Image src={step.icon} alt={`icon${index + 1}`} /></span>
+                              <span><Image src={step.icon} alt={`icon${index + 1}`} width={48} height={48} /></span>
                             </div>
                             <h4 className="twm-title">{step.title}</h4>
                             <p>{step.description}</p>
@@ -153,7 +165,7 @@ const AboutPage = () => {
                 <div className="col-lg-4 col-md-12">
                   <div className="twm-explore-media-wrap">
                     <div className="twm-media">
-                      <Image src="/images/gir-large.png" alt="" />
+                      <Image src="/images/gir-large.png" alt="" width={400} height={600} />
                     </div>
                   </div>
                 </div>
@@ -170,7 +182,9 @@ const AboutPage = () => {
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry the standard dummy text ever since the when an printer took.</p>
                       </div>
                       <div className="twm-upload-file">
-                        <button type="button" className="site-button">Upload Your Resume <i className="feather-upload"></i></button>
+                        <button type="button" className="site-button">
+                          Upload Your Resume <FiUpload className="ms-2" />
+                        </button>
                       </div>
                     </div>
                     <div className="twm-bold-circle-right"></div>
