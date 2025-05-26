@@ -14,16 +14,17 @@ const Footer = () => {
                     <img src="images/logo-light-2.png" alt="Logo" />
                   </a>
                 </div>
-                <p>Many desktop publishing packages and web page editors now.</p>
+                <br />
+                {/* <p>Many desktop publishing packages and web page editors now.</p> */}
                 <ul className="ftr-list">
                   <li>
-                    <p><span>Address :</span>65 Sunset CA 90026, USA </p>
+                    <p><span>Address :</span>Laxmi Nagar 110091, NEW DELHI, INDIA </p>
                   </li>
                   <li>
-                    <p><span>Email :</span>example@max.com</p>
+                    <p><span>Email :</span>bipulkumar3103@gmail.com</p>
                   </li>
                   <li>
-                    <p><span>Call :</span>555-555-1234</p>
+                    <p><span>Call :</span>+91 9958126556</p>
                   </li>
                 </ul>
               </div>
@@ -83,15 +84,15 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-bottom">
-          <div className="footer-bottom-info">
-            <div className="footer-copy-right">
-              <span className="copyrights-text">Copyright © 2023 by thewebmax All Rights Reserved.</span>
+          <div className="footer-bottom-info ">
+            <div className="footer-copy-right ">
+              <span className="copyrights-text">Copyright © 2025 by Bipul</span>
             </div>
             <ul className="social-icons" style={{ display: 'flex', gap: '10px' }}>
-              <li><a href="javascript:void(0);"><FaFacebookF /></a></li>
-              <li><a href="javascript:void(0);"><FaTwitter /></a></li>
-              <li><a href="javascript:void(0);"><FaInstagram /></a></li>
-              <li><a href="javascript:void(0);"><FaYoutube /></a></li>
+              <li><a href="#"><FaFacebookF /></a></li>
+              <li><a href="#;"><FaTwitter /></a></li>
+              <li><a href="#"><FaInstagram /></a></li>
+              <li><a href="#"><FaYoutube /></a></li>
             </ul>
           </div>
         </div>

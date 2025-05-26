@@ -214,3 +214,20 @@ body {
   }
 }
 
+.footer-bottom-info{
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.footer-bottom-info ul{
+  position: absolute !important;
+  right: 0px !important;
+  align-items: center !important;
+}
+@media (max-width: 480px) {
+  .footer-bottom-info ul{
+    display: block;
+    position: relative !important;
+    justify-content: center !important;
+  }
+}

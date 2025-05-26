@@ -7,6 +7,7 @@ import LoginModal from '../Modal/LoginModal';
 import SignUpModal from '../Modal/SignUpModal';
 import { useSession, signOut } from 'next-auth/react';
 import { USER_TYPE_ID } from '@/lib/constants';
+import Sidebar from './Sidebar';
 
 const Header = () => {
   const { data: session } = useSession();
@@ -54,8 +55,8 @@ const Header = () => {
 
   const getDashboardLink = () => {
     if (!session?.user?.user_type_id) return '/candidate-dashboard';
-      return session.user.user_type_id === String(USER_TYPE_ID.EMPLOYER) ? '/employee-dashboard' : '/candidate-dashboard';
-    };
+    return session.user.user_type_id === String(USER_TYPE_ID.EMPLOYER) ? '/employee-dashboard' : '/candidate-dashboard';
+  };
 
   return (
     <>
@@ -169,6 +170,14 @@ const Header = () => {
         </div>
       </header>
       {/* HEADER END */}
+
+      {/* Mobile Sidebar */}
+      <Sidebar 
+        isOpen={mobileNavOpen}
+        onClose={() => setMobileNavOpen(false)}
+        onOpenLogin={openLoginModal}
+        onOpenSignUp={openSignUpModal}
+      />
 
       {/* Sign Up Modal */}
       {signUpModalOpen && !loginModalOpen && (
