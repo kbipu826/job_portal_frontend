@@ -23,7 +23,7 @@ export const useLoading = () => {
   return context;
 };
 
-const ClientLoadingProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const ClientLoadingProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isInitialLoading, setInitialLoading] = useState(true);
   const [loadingText, setLoadingText] = useState('Loading...');
