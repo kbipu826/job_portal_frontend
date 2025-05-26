@@ -1,9 +1,9 @@
 'use client';
 
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
-import Spinner from '@/components/ui/Spinner';
 import { useSession } from 'next-auth/react';
 import { usePathname, useSearchParams } from 'next/navigation';
+import LoadingOverlay from '@/components/ui/LoadingOverlay';
 
 interface LoadingContextType {
   isLoading: boolean;
@@ -54,11 +54,6 @@ export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const startLoading = useCallback(() => setIsLoading(true), []);
   const stopLoading = useCallback(() => setIsLoading(false), []);
 
-  // Don't render anything during SSR
-  if (typeof window === 'undefined') {
-    return <>{children}</>;
-  }
-
   return (
     <LoadingContext.Provider value={{ 
       isLoading, 
@@ -68,30 +63,11 @@ export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ child
       setInitialLoading
     }}>
       {children}
-      {(isLoading || isInitialLoading) && (
-        <div 
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 9999,
-            width: '100vw',
-            height: '100vh'
-          }}
-        >
-          <Spinner 
-            size="lg" 
-            color="primary"
-            text={isInitialLoading ? 'Initializing...' : loadingText}
-          />
-        </div>
-      )}
+      <LoadingOverlay 
+        isLoading={isLoading}
+        isInitialLoading={isInitialLoading}
+        loadingText={loadingText}
+      />
     </LoadingContext.Provider>
   );
 }; 
