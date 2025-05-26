@@ -35,11 +35,11 @@ export default function RootLayout({
     "css/switcher.css"
   ];
 
-
   return (
     <html lang="en">
       <head>
         <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+        <link rel="preload" href="/fonts/flaticon.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         {stylesheets.map((href, index) => (
           <link key={index} rel="stylesheet" type="text/css" href={href} />
         ))}

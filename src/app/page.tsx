@@ -12,6 +12,7 @@ import NewsLetter from "@/components/NewsLetter/NewsLetter";
 import './global.css'
 
 
+
 export default function Home() {
   return (
     <div className="page-wraper" data-anm=".anm">

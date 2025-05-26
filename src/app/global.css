@@ -7,6 +7,15 @@
   --border-color: #e5e5e5;
 }
 
+@font-face {
+  font-family: 'Flaticon';
+  src: url('/fonts/flaticon.woff2') format('woff2'),
+       url('/fonts/flaticon.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 /* Icon Styles */
 .icon-wrapper {
   display: flex;
