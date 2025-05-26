@@ -1,42 +1,22 @@
 'use client';
 
+import React from 'react';
 import { SessionProvider } from 'next-auth/react';
-import { useState } from 'react';
+import { ThemeProvider } from 'next-themes';
 import { Toaster } from 'react-hot-toast';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { LoadingProvider } from './LoadingProvider';
+import LoadingProvider from './LoadingProvider';
 
-interface ProvidersProps {
-  children: React.ReactNode;
-}
-
-export default function Providers({ children }: ProvidersProps) {
-  const [queryClient] = useState(() => new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: 60 * 1000,
-        retry: 1,
-      },
-    },
-  }));
-
+const Providers: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <SessionProvider>
+    <SessionProvider>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <LoadingProvider>
           {children}
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              duration: 3000,
-              style: {
-                background: '#333',
-                color: '#fff',
-              },
-            }}
-          />
+          <Toaster position="top-center" />
         </LoadingProvider>
-      </SessionProvider>
-    </QueryClientProvider>
+      </ThemeProvider>
+    </SessionProvider>
   );
-}
+};
+
+export default Providers;
