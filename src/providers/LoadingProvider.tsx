@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import Spinner from '@/components/ui/Spinner';
 import { useSession } from 'next-auth/react';
@@ -51,6 +53,11 @@ export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
   const startLoading = useCallback(() => setIsLoading(true), []);
   const stopLoading = useCallback(() => setIsLoading(false), []);
+
+  // Don't render anything during SSR
+  if (typeof window === 'undefined') {
+    return <>{children}</>;
+  }
 
   return (
     <LoadingContext.Provider value={{ 
