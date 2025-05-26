@@ -189,8 +189,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onOpenLogin, onOpenS
               className="twm-nav-post-a-job"
               style={{
                 padding: '12px 20px',
-                backgroundColor: '#28a745',
-                color: 'white',
+                backgroundColor: '#e0eeff',
+                color: '#1967d2',
                 border: 'none',
                 borderRadius: '5px',
                 textAlign: 'center',
@@ -213,7 +213,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onOpenLogin, onOpenS
               className="twm-nav-sign-up"
               style={{
                 padding: '12px 20px',
-                backgroundColor: '#007bff',
+                backgroundColor: '#1e45ea',
                 color: 'white',
                 border: 'none',
                 borderRadius: '5px',
