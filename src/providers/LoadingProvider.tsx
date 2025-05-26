@@ -1,5 +1,7 @@
-import React, { createContext, useContext, useState, useCallback } from 'react';
+import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import Spinner from '@/components/ui/Spinner';
+import { useSession } from 'next-auth/react';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 interface LoadingContextType {
   isLoading: boolean;
@@ -22,6 +24,30 @@ export const useLoading = () => {
 export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isInitialLoading, setInitialLoading] = useState(true);
+  const [loadingText, setLoadingText] = useState('Loading...');
+  const { status } = useSession();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  // Handle initial loading state
+  useEffect(() => {
+    if (status !== 'loading') {
+      setInitialLoading(false);
+    }
+  }, [status]);
+
+  // Handle route change loading
+  useEffect(() => {
+    if (pathname) {
+      setIsLoading(true);
+      setLoadingText(`Loading ${pathname.split('/').pop() || 'page'}...`);
+      const timeout = setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [pathname, searchParams]);
 
   const startLoading = useCallback(() => setIsLoading(true), []);
   const stopLoading = useCallback(() => setIsLoading(false), []);
@@ -36,8 +62,27 @@ export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }}>
       {children}
       {(isLoading || isInitialLoading) && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999]">
-          <Spinner size="lg" color="white" />
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+            width: '100vw',
+            height: '100vh'
+          }}
+        >
+          <Spinner 
+            size="lg" 
+            color="primary"
+            text={isInitialLoading ? 'Initializing...' : loadingText}
+          />
         </div>
       )}
     </LoadingContext.Provider>

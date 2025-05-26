@@ -4,12 +4,14 @@ interface SpinnerProps {
   size?: 'sm' | 'md' | 'lg';
   color?: 'primary' | 'secondary' | 'white';
   className?: string;
+  text?: string;
 }
 
 const Spinner: React.FC<SpinnerProps> = ({ 
   size = 'md', 
   color = 'primary',
-  className = ''
+  className = '',
+  text = 'Loading...'
 }) => {
   const sizeClasses = {
     sm: 'w-4 h-4',
@@ -18,16 +20,19 @@ const Spinner: React.FC<SpinnerProps> = ({
   };
 
   const colorClasses = {
-    primary: 'text-blue-600',
-    secondary: 'text-gray-600',
+    primary: 'text-[#1a365d]', // Dark blue
+    secondary: 'text-[#1a365d]',
     white: 'text-white'
   };
 
   return (
-    <div className={`inline-block ${className}`}>
+    <div className={`inline-flex flex-col items-center gap-3 ${className}`}>
       <div
-        className={`${sizeClasses[size]} ${colorClasses[color]} animate-spin`}
+        className={`${sizeClasses[size]} ${colorClasses[color]}`}
         role="status"
+        style={{
+          animation: 'spin 1s linear infinite'
+        }}
       >
         <svg
           className="w-full h-full"
@@ -49,8 +54,33 @@ const Spinner: React.FC<SpinnerProps> = ({
             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
           />
         </svg>
-        <span className="sr-only">Loading...</span>
       </div>
+      <div 
+        className={`${colorClasses[color]} text-lg font-medium`}
+        style={{
+          animation: 'fadeInOut 1.5s ease-in-out infinite'
+        }}
+      >
+        {text}
+      </div>
+      <style jsx>{`
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+        @keyframes fadeInOut {
+          0%, 100% {
+            opacity: 0.5;
+          }
+          50% {
+            opacity: 1;
+          }
+        }
+      `}</style>
     </div>
   );
 };
