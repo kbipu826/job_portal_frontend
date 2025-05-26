@@ -21,7 +21,7 @@ const RecruiterCard = ({ recruiter }: { recruiter: Recruiter }) => (
                 <div className="twm-rec-jobs">{recruiter.jobs} Jobs</div>
             </div>
             <div className="twm-rec-content">
-                <h4 className="twm-title"><a href="job-list.html">{recruiter.name}</a></h4>
+                <h4 className="twm-title"><a href="/jobs">{recruiter.name}</a></h4>
                 <div className="twm-rec-rating-wrap">
                     <div className="twm-rec-rating">
                         {[...Array(5)].map((_, i) => (

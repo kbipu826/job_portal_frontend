@@ -148,9 +148,9 @@ const Dashboard = () => {
                         </a>
                         <div className="dropdown-menu" aria-labelledby="ID-ACCOUNT_dropdown">
                           <ul>
-                            <li><a href="dashboard.html"><i className="fa fa-home"></i>Dashboard</a></li>
-                            <li><a href="dash-messages.html"><i className="fa fa-envelope"></i> Messages</a></li>
-                            <li><a href="dash-my-profile.html"><i className="fa fa-user"></i> Profile</a></li>
+                            <li><a href="/employee-dashboard"><i className="fa fa-home"></i>Dashboard</a></li>
+                            <li><a href="/dash-messages"><i className="fa fa-envelope"></i> Messages</a></li>
+                            <li><a href="/dash-my-profile"><i className="fa fa-user"></i> Profile</a></li>
                             <li><a href="#" onClick={handleLogout}><i className="fa fa-share-square"></i> Logout</a></li>
                           </ul>
                         </div>
@@ -165,47 +165,46 @@ const Dashboard = () => {
       </header>
       <nav id="sidebar-admin-wraper">
         <div className="page-logo">
-          <a href="index.html"><img src="images/logo-dark.png" alt="" /></a>
+          <a href="/"><img src="images/logo-dark.png" alt="" /></a>
         </div>
         <div className="admin-nav scrollbar-macosx">
           <ul>
             <li className="active">
-              <a href="dashboard.html"><i className="fa fa-home"></i><span className="admin-nav-text">Dashboard</span></a>
+              <a href="/employee-dashboard"><i className="fa fa-home"></i><span className="admin-nav-text">Dashboard</span></a>
             </li>
             <li>
-              <a href="dash-company-profile.html"><i className="fa fa-user-tie"></i><span className="admin-nav-text">Company Profile</span></a>
+              <a href="/dash-company-profile"><i className="fa fa-user-tie"></i><span className="admin-nav-text">Company Profile</span></a>
             </li>
             <li>
               <a href="javascript:;"><i className="fa fa-suitcase"></i><span className="admin-nav-text">Jobs</span></a>
               <ul className="sub-menu">
-                <li> <a href="dash-post-job.html"><span className="admin-nav-text">Post a New Jobs</span></a></li>
-                <li> <a href="dash-manage-jobs.html"><span className="admin-nav-text">Manage Jobs</span></a></li>
+                <li> <a href="/dash-post-job"><span className="admin-nav-text">Post a New Jobs</span></a></li>
+                <li> <a href="/dash-manage-jobs"><span className="admin-nav-text">Manage Jobs</span></a></li>
               </ul>
             </li>
             <li>
-              <a href="dash-candidates.html"><i className="fa fa-user-friends"></i><span className="admin-nav-text">Candidates</span></a>
+              <a href="/dash-candidates"><i className="fa fa-user-friends"></i><span className="admin-nav-text">Candidates</span></a>
             </li>
             <li>
-              <a href="dash-bookmark.html"><i className="fa fa-bookmark"></i><span className="admin-nav-text">Bookmark Resumes</span></a>
+              <a href="/dash-bookmark"><i className="fa fa-bookmark"></i><span className="admin-nav-text">Bookmark Resumes</span></a>
             </li>
             <li>
-              <a href="dash-package.html"><i className="fa fa-money-bill-alt"></i><span className="admin-nav-text">Packages</span></a>
+              <a href="/dash-package"><i className="fa fa-money-bill-alt"></i><span className="admin-nav-text">Packages</span></a>
             </li>
             <li>
               <a href="javascript:;"><i className="fa fa-envelope"></i><span className="admin-nav-text">Messages <sup className="twm-msg-noti">5</sup></span></a>
               <ul className="sub-menu">
-                <li> <a href="dash-messages.html"><span className="admin-nav-text">MSG Style-1</span></a></li>
-                <li> <a href="dash-messages_2.html"><span className="admin-nav-text">MSG Style-2</span></a></li>
+                <li> <a href="dash-messages"><span className="admin-nav-text">My Message</span></a></li>
               </ul>
             </li>
             <li>
-              <a href="dash-resume-alert.html"><i className="fa fa-bell"></i><span className="admin-nav-text">Resume Alerts</span></a>
+              <a href="/dash-resume-alert"><i className="fa fa-bell"></i><span className="admin-nav-text">Resume Alerts</span></a>
             </li>
             <li>
-              <a href="dash-my-profile.html"><i className="fa fa-user"></i><span className="admin-nav-text">My Profile</span></a>
+              <a href="/dash-my-profile"><i className="fa fa-user"></i><span className="admin-nav-text">My Profile</span></a>
             </li>
             <li>
-              <a href="dash-change-password.html"><i className="fa fa-fingerprint"></i><span className="admin-nav-text">Change Password</span></a>
+              <a href="/dash-change-password"><i className="fa fa-fingerprint"></i><span className="admin-nav-text">Change Password</span></a>
             </li>
             <li>
               <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#delete-dash-profile"><i className="fa fa-trash-alt"></i><span className="admin-nav-text">Delete Profile</span></a>

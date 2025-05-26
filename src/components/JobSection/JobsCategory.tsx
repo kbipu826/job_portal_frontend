@@ -33,7 +33,7 @@ const JobsCategory: React.FC = () => {
                                         <FaHandshake className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Marketing & Sale</a>
+                                        <a href="/job-detail">Marketing & Sale</a>
                                         <div className="twm-jobs-available">1526 Jobs Available</div>
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@ const JobsCategory: React.FC = () => {
                                         <FaHeadset className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Customer Help</a>
+                                        <a href="/job-detail">Customer Help</a>
                                         <div className="twm-jobs-available">1526 Jobs Available</div>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@ const JobsCategory: React.FC = () => {
                                         <FaChartBar className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Finance</a>
+                                        <a href="/job-detail">Finance</a>
                                         <div className="twm-jobs-available">168 Jobs Available</div>
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@ const JobsCategory: React.FC = () => {
                                         <MdDashboard className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Software</a>
+                                        <a href="/job-detail">Software</a>
                                         <div className="twm-jobs-available">300 Jobs Available</div>
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@ const JobsCategory: React.FC = () => {
                                         <FaUserTie className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Human Resource</a>
+                                        <a href="/job-detail">Human Resource</a>
                                         <div className="twm-jobs-available">125 Jobs Available</div>
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@ const JobsCategory: React.FC = () => {
                                         <FaTasks className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Management</a>
+                                        <a href="/job-detail">Management</a>
                                         <div className="twm-jobs-available">450 Jobs Available</div>
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@ const JobsCategory: React.FC = () => {
                                         <FaUser className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Retail & Products</a>
+                                        <a href="/job-detail">Retail & Products</a>
                                         <div className="twm-jobs-available">95 Jobs Available</div>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@ const JobsCategory: React.FC = () => {
                                         <FaTools className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Security Analyst</a>
+                                        <a href="/job-detail">Security Analyst</a>
                                         <div className="twm-jobs-available">35 Jobs Available</div>
                                     </div>
                                 </div>
@@ -137,7 +137,7 @@ const JobsCategory: React.FC = () => {
                                         <FaRegStickyNote className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Content Writer</a>
+                                        <a href="/job-detail">Content Writer</a>
                                         <div className="twm-jobs-available">200 Jobs Available</div>
                                     </div>
                                 </div>
@@ -150,7 +150,7 @@ const JobsCategory: React.FC = () => {
                                         <FaCode className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Market Research</a>
+                                        <a href="/job-detail">Market Research</a>
                                         <div className="twm-jobs-available">140 Jobs Available</div>
                                     </div>
                                 </div>
@@ -163,7 +163,7 @@ const JobsCategory: React.FC = () => {
                                         <FaBriefcase className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Marketing & Sale</a>
+                                        <a href="/job-detail">Marketing & Sale</a>
                                         <div className="twm-jobs-available">80 Jobs Available</div>
                                     </div>
                                 </div>
@@ -176,7 +176,7 @@ const JobsCategory: React.FC = () => {
                                         <FaUserCog className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Customer Help</a>
+                                        <a href="/job-detail">Customer Help</a>
                                         <div className="twm-jobs-available">160 Jobs Available</div>
                                     </div>
                                 </div>
@@ -189,7 +189,7 @@ const JobsCategory: React.FC = () => {
                                         <FaHandshake className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Marketing & Sale</a>
+                                        <a href="/job-detail">Marketing & Sale</a>
                                         <div className="twm-jobs-available">1526 Jobs Available</div>
                                     </div>
                                 </div>
@@ -202,7 +202,7 @@ const JobsCategory: React.FC = () => {
                                         <FaHeadset className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Customer Help</a>
+                                        <a href="/job-detail">Customer Help</a>
                                         <div className="twm-jobs-available">1526 Jobs Available</div>
                                     </div>
                                 </div>
@@ -215,7 +215,7 @@ const JobsCategory: React.FC = () => {
                                         <FaChartBar className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Finance</a>
+                                        <a href="/job-detail">Finance</a>
                                         <div className="twm-jobs-available">168 Jobs Available</div>
                                     </div>
                                 </div>
@@ -228,7 +228,7 @@ const JobsCategory: React.FC = () => {
                                         <MdDashboard className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Software</a>
+                                        <a href="/job-detail">Software</a>
                                         <div className="twm-jobs-available">300 Jobs Available</div>
                                     </div>
                                 </div>
@@ -241,7 +241,7 @@ const JobsCategory: React.FC = () => {
                                         <FaUserTie className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Human Resource</a>
+                                        <a href="/job-detail">Human Resource</a>
                                         <div className="twm-jobs-available">125 Jobs Available</div>
                                     </div>
                                 </div>
@@ -254,7 +254,7 @@ const JobsCategory: React.FC = () => {
                                         <FaTasks className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Management</a>
+                                        <a href="/job-detail">Management</a>
                                         <div className="twm-jobs-available">450 Jobs Available</div>
                                     </div>
                                 </div>
@@ -267,7 +267,7 @@ const JobsCategory: React.FC = () => {
                                         <FaUser className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Retail & Products</a>
+                                        <a href="/job-detail">Retail & Products</a>
                                         <div className="twm-jobs-available">95 Jobs Available</div>
                                     </div>
                                 </div>
@@ -280,7 +280,7 @@ const JobsCategory: React.FC = () => {
                                         <FaTools className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Security Analyst</a>
+                                        <a href="/job-detail">Security Analyst</a>
                                         <div className="twm-jobs-available">35 Jobs Available</div>
                                     </div>
                                 </div>
@@ -293,7 +293,7 @@ const JobsCategory: React.FC = () => {
                                         <FaRegStickyNote className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Content Writer</a>
+                                        <a href="/job-detail">Content Writer</a>
                                         <div className="twm-jobs-available">200 Jobs Available</div>
                                     </div>
                                 </div>
@@ -306,7 +306,7 @@ const JobsCategory: React.FC = () => {
                                         <FaCode className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Market Research</a>
+                                        <a href="/job-detail">Market Research</a>
                                         <div className="twm-jobs-available">140 Jobs Available</div>
                                     </div>
                                 </div>
@@ -319,7 +319,7 @@ const JobsCategory: React.FC = () => {
                                         <FaBriefcase className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Marketing & Sale</a>
+                                        <a href="/job-detail">Marketing & Sale</a>
                                         <div className="twm-jobs-available">80 Jobs Available</div>
                                     </div>
                                 </div>
@@ -332,7 +332,7 @@ const JobsCategory: React.FC = () => {
                                         <FaUserCog className="icon-xld" color='white' size={30} />
                                     </div>
                                     <div className="twm-content">
-                                        <a href="job-detail.html">Customer Help</a>
+                                        <a href="/job-detail">Customer Help</a>
                                         <div className="twm-jobs-available">160 Jobs Available</div>
                                     </div>
                                 </div>

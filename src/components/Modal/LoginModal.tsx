@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { FaBuilding, FaFacebookF, FaGoogle, FaLinkedinIn, FaTwitter, FaUserTie } from 'react-icons/fa';
 import { USER_TYPE_ID } from '@/lib/constants';
+import { useLoading } from '@/providers/LoadingProvider';
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -14,18 +15,18 @@ interface LoginModalProps {
 }
 
 const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, activeTab, onTabChange, onSwitchToSignUp }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const { startLoading, stopLoading } = useLoading();
   const [formData, setFormData] = useState({
     login: '',
     password: '',
-    user_type_id: String(USER_TYPE_ID.CANDIDATE) // Set default to CANDIDATE
+    user_type_id: String(USER_TYPE_ID.CANDIDATE)
   });
 
   if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
+    startLoading();
 
     try {
       const validatedData = loginSchema.parse(formData);
@@ -54,7 +55,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, activeTab, onT
         toast.error('Something went wrong');
       }
     } finally {
-      setIsLoading(false);
+      stopLoading();
     }
   };
 
@@ -141,9 +142,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, activeTab, onT
                         <button
                           type="submit"
                           className="site-button"
-                          disabled={isLoading}
                         >
-                          {isLoading ? 'Logging in...' : 'Log in'}
+                          Log in
                         </button>
                         <div className="mt-3 mb-3">
                           Don&apos;t have an account?
@@ -200,9 +200,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, activeTab, onT
                         <button
                           type="submit"
                           className="site-button"
-                          disabled={isLoading}
                         >
-                          {isLoading ? 'Logging in...' : 'Log in'}
+                          Log in
                         </button>
                         <div className="mt-3 mb-3">
                           Don&apos;t have an account?

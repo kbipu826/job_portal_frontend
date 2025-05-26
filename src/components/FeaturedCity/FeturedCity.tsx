@@ -25,7 +25,7 @@ const FeaturedCity = () => {
               </div>
             </div>
             <div className="col-xl-7 col-lg-7 col-md-12 wt-separator-two-part-right text-right">
-              <a href="job-list.html" className="site-button white">View All Locations</a>
+              <a href="/jobs" className="site-button white">View All Locations</a>
             </div>
           </div>
         </div>
@@ -38,7 +38,7 @@ const FeaturedCity = () => {
                   <div className="twm-media" style={{ backgroundImage: `url(images/home-5/featured-cities/${city.image})` }}>
                   </div>
                   <div className="twm-city-info">
-                    <h4 className="twm-title"><a href="job-list.html">{city.name}</a></h4>
+                    <h4 className="twm-title"><a href="/jobs">{city.name}</a></h4>
                     <div className="twm-city-jobs">{city.jobs}</div>
                   </div>
                 </div>

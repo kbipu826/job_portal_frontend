@@ -3,7 +3,14 @@ import { getToken } from "next-auth/jwt";
 import { USER_TYPE_ID } from "@/lib/constants";
 
 // Define public routes that don't require authentication
-const publicRoutes = ["/", "/sign-in", "/about","/sign-up"];
+const publicRoutes = [
+  "/", 
+  "/sign-in", 
+  "/about",
+  "/sign-up",
+  "/contact",
+  "/jobs"
+];
 
 // Define role-specific routes
 const candidateRoutes = ["/candidate-dashboard"];
@@ -36,6 +43,15 @@ export async function middleware(request: NextRequest) {
 
     if (isEmployerRoute && userType !== USER_TYPE_ID.EMPLOYER) {
       return NextResponse.redirect(new URL("/candidate-dashboard", request.url));
+    }
+
+    // If user is authenticated and trying to access public routes, redirect to appropriate dashboard
+    if (isPublicRoute && pathname === "/") {
+      if (userType === USER_TYPE_ID.CANDIDATE) {
+        return NextResponse.redirect(new URL("/candidate-dashboard", request.url));
+      } else if (userType === USER_TYPE_ID.EMPLOYER) {
+        return NextResponse.redirect(new URL("/employee-dashboard", request.url));
+      }
     }
   }
 

@@ -5,6 +5,7 @@ import { registerSchema } from '@/schemas/auth';
 import { USER_TYPE_ID } from '@/lib/constants';
 import { useRegister } from '@/hooks/auth/auth';
 import { signIn } from 'next-auth/react';
+import { useLoading } from '@/providers/LoadingProvider';
 
 interface SignUpModalProps {
   isOpen: boolean;
@@ -15,7 +16,8 @@ interface SignUpModalProps {
 }
 
 const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose, activeTab=String(USER_TYPE_ID.CANDIDATE), onTabChange, onSwitchToLogin }) => {
-  const { mutate: register, isLoading } = useRegister();
+  const { mutate: register } = useRegister();
+  const { startLoading, stopLoading } = useLoading();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -34,6 +36,7 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose, activeTab=St
       toast.error('You must agree to the terms and conditions');
       return;
     }
+    startLoading();
     try {
       const validatedData = registerSchema.parse({
         ...formData,
@@ -80,6 +83,8 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose, activeTab=St
       } else {
         toast.error('Something went wrong');
       }
+    } finally {
+      stopLoading();
     }
   };
 
@@ -184,9 +189,8 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ isOpen, onClose, activeTab=St
         <button
           type="submit"
           className="site-button"
-          disabled={isLoading}
         >
-          {isLoading ? 'Signing up...' : 'Sign Up'}
+          Sign Up
         </button>
       </div>
     </div>

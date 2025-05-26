@@ -63,8 +63,8 @@ const AboutSection = () => {
                   <span>45 +</span> Jobs Available
                 </div>
                 <div className="twm-read-more cplumn-2">
-                  <a href="about-1.html" className="site-button">Search Jobs</a>
-                  <a href="about-1.html" className="site-button-link underline">Learn More</a>
+                  <a href="/about" className="site-button">Search Jobs</a>
+                  <a href="/about" className="site-button-link underline">Learn More</a>
                 </div>
               </div>
             </div>

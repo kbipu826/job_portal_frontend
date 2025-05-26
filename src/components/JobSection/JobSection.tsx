@@ -107,7 +107,7 @@ const JobSection: React.FC = () => {
                                         </div>
 
                                         <div className="twm-mid-content">
-                                            <a href="job-detail.html" className="twm-job-title">
+                                            <a href="/job-detail" className="twm-job-title">
                                                 <h4>{job.jobTitle}</h4>
                                             </a>
                                             <div className="twm-job-duration">
@@ -134,7 +134,7 @@ const JobSection: React.FC = () => {
                                                     <div className="tot-view"><b>{job.views}<i>+</i></b></div>
                                                 </div>
                                             </div>
-                                            <a href="job-detail.html" className="twm-jobs-browse site-text-primary">Apply Job</a>
+                                            <a href="/job-detail" className="twm-jobs-browse site-text-primary">Apply Job</a>
                                         </div>
                                         <div className="twm-jobs-category outline">
                                             {job.categories.map((category, catIndex) => (

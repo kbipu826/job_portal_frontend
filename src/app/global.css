@@ -21,11 +21,13 @@
 .icon-wrapper svg {
   color: var(--primary-color);
   transition: all 0.3s ease;
-  font-size: large;
+  font-size: 40px !important;
+  scale:2
 }
 
+
 .icon-wrapper:hover svg {
-  scale: 2;
+  scale:1.8;
 }
 
 .me-2 {

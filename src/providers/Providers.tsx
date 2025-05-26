@@ -4,6 +4,7 @@ import { SessionProvider } from 'next-auth/react';
 import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { LoadingProvider } from './LoadingProvider';
 
 interface ProvidersProps {
   children: React.ReactNode;
@@ -22,17 +23,19 @@ export default function Providers({ children }: ProvidersProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <SessionProvider>
-        {children}
-        <Toaster
-          position="top-right"
-          toastOptions={{
-            duration: 3000,
-            style: {
-              background: '#333',
-              color: '#fff',
-            },
-          }}
-        />
+        <LoadingProvider>
+          {children}
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              duration: 3000,
+              style: {
+                background: '#333',
+                color: '#fff',
+              },
+            }}
+          />
+        </LoadingProvider>
       </SessionProvider>
     </QueryClientProvider>
   );

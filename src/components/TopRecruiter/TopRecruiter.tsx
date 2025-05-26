@@ -39,7 +39,7 @@ const TopRecruiter = () => (
                         </ul>
                     </div>
                     <div className="text-center m-b30">
-                        <a href="job-list.html" className="site-button">View All</a>
+                        <a href="/jobs" className="site-button">View All</a>
                     </div>
                 </div>
             </div>
