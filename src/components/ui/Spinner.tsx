@@ -4,14 +4,12 @@ interface SpinnerProps {
   size?: 'sm' | 'md' | 'lg';
   color?: 'primary' | 'secondary' | 'white';
   className?: string;
-  text?: string;
 }
 
 const Spinner: React.FC<SpinnerProps> = ({ 
   size = 'md', 
   color = 'primary',
-  className = '',
-  text = 'Loading...'
+  className = ''
 }) => {
   const sizeClasses = {
     sm: 'w-4 h-4',
@@ -20,64 +18,27 @@ const Spinner: React.FC<SpinnerProps> = ({
   };
 
   const colorClasses = {
-    primary: 'text-[#1a365d]', // Dark blue
-    secondary: 'text-[#1a365d]',
+    primary: 'text-blue-600',
+    secondary: 'text-gray-600',
     white: 'text-white'
   };
 
   return (
-    <div className={`inline-flex flex-col items-center gap-3 ${className}`}>
-      <div
-        className={`${sizeClasses[size]} ${colorClasses[color]}`}
-        role="status"
-        style={{
-          animation: 'spin 1s linear infinite'
-        }}
-      >
-        <svg
-          className="w-full h-full"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <circle
-            className="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            strokeWidth="4"
-          />
-          <path
-            className="opacity-75"
-            fill="currentColor"
-            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-          />
-        </svg>
-      </div>
-      <div 
-        className={`${colorClasses[color]} text-lg font-medium`}
-        style={{
-          animation: 'fadeInOut 1.5s ease-in-out infinite'
-        }}
-      >
-        {text}
-      </div>
+    <div 
+      className={`inline-block ${className}`}
+      style={{
+        width: size === 'sm' ? '16px' : size === 'md' ? '32px' : '48px',
+        height: size === 'sm' ? '16px' : size === 'md' ? '32px' : '48px',
+        border: '3px solid rgba(255, 255, 255, 0.3)',
+        borderRadius: '50%',
+        borderTopColor: color === 'white' ? '#fff' : color === 'primary' ? '#3b82f6' : '#4b5563',
+        animation: 'spin 1s linear infinite'
+      }}
+    >
       <style jsx>{`
         @keyframes spin {
-          from {
-            transform: rotate(0deg);
-          }
           to {
             transform: rotate(360deg);
-          }
-        }
-        @keyframes fadeInOut {
-          0%, 100% {
-            opacity: 0.5;
-          }
-          50% {
-            opacity: 1;
           }
         }
       `}</style>
