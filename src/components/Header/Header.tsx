@@ -68,7 +68,7 @@ const Header = () => {
               <div className="logo-header">
                 <div className="logo-header-inner logo-header-one">
                   <Link href="/">
-                    <Image src="/images/logo-dark.png" alt="Logo" width={150} height={50} />
+                    <Image src="/images/TrainingSolutionsLogo.png" alt="Logo" width={150} height={50} />
                   </Link>
                 </div>
               </div>
