@@ -21,10 +21,10 @@ const Footer = () => {
                     <p><span>Address :</span>Laxmi Nagar 110091, NEW DELHI, INDIA </p>
                   </li>
                   <li>
-                    <p><span>Email :</span>bipulkumar3103@gmail.com</p>
+                    <p><span>Email :</span>contact@training-solutions.com</p>
                   </li>
                   <li>
-                    <p><span>Call :</span>+91 9958126556</p>
+                    <p><span>Call :</span>+91 XXXXXXXXXX</p>
                   </li>
                 </ul>
               </div>
@@ -62,7 +62,7 @@ const Footer = () => {
                       <li><a href="/faq">FAQs</a></li>
                       <li><a href="/employer-detail">Employer detail</a></li>
                       <li><a href="/dash-my-profile">Profile</a></li>
-                      <li><a href="/error-404">404 Page</a></li>
+                      {/* <li><a href="/error-404">404 Page</a></li> */}
                       <li><a href="/pricing">Pricing</a></li>
                     </ul>
                   </div>
