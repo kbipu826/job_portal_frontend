@@ -29,6 +29,23 @@ const nextConfig = {
       },
     ];
   },
+  // Configure which pages should be static
+  async generateStaticParams() {
+    return {
+      '/': {},
+      '/about': {},
+      '/contact': {},
+      '/jobs': {},
+      '/job-detail': {},
+    };
+  },
+  // Configure page generation
+  async generatePage() {
+    return {
+      static: true,
+      dynamic: false,
+    };
+  },
 };
 
 export default nextConfig;
