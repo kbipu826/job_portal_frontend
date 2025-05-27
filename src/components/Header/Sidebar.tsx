@@ -107,7 +107,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onOpenLogin, onOpenS
           </li>
           <li>
             <Link 
-              href="/candidates" 
+              href="/contact" 
               onClick={onClose}
               style={{
                 color: '#666',
@@ -117,7 +117,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onOpenLogin, onOpenS
                 padding: '8px 0'
               }}
             >
-              Candidates
+              Contact
             </Link>
           </li>
         </ul>
