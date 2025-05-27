@@ -1,17 +1,13 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FiMapPin, FiCheck } from 'react-icons/fi';
-import ApplyJobModal from '@/components/Modals/ApplyJobModal';
+import JobDetailClient from './JobDetailClient';
 
 // Mark this page as static
 export const dynamic = 'force-static';
 
 export default function JobDetail() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     <div className="page-wraper">
       {/* INNER PAGE BANNER */}
@@ -91,14 +87,8 @@ export default function JobDetail() {
                             </div>
                           </div>
 
-                          <div className="twm-job-self-bottom">
-                            <button 
-                              className="site-button" 
-                              onClick={() => setIsModalOpen(true)}
-                            >
-                              Apply Now
-                            </button>
-                          </div>
+                          {/* Client component for modal functionality */}
+                          <JobDetailClient />
                         </div>
                       </div>
                     </div>
@@ -319,12 +309,6 @@ export default function JobDetail() {
           </div>
         </div>
       </div>
-
-      {/* Apply Job Modal */}
-      <ApplyJobModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-      />
     </div>
   );
 } 
