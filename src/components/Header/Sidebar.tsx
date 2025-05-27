@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { FiX, FiLogIn, FiBriefcase, FiLogOut } from 'react-icons/fi';
+import { FiX, FiLogIn, FiBriefcase, FiLogOut, FiUserPlus } from 'react-icons/fi';
 import { useSession, signOut } from 'next-auth/react';
 import { USER_TYPE_ID } from '@/lib/constants';
 
@@ -140,8 +140,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onOpenLogin, onOpenS
               className="twm-nav-sign-up"
               style={{
                 padding: '12px 20px',
-                backgroundColor: '#e0eeff',
-                color: '#1967d2',
+                backgroundColor: '#1e45ea',
+                color: 'white',
                 border: 'none',
                 borderRadius: '5px',
                 cursor: 'pointer',
@@ -164,8 +164,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onOpenLogin, onOpenS
               className="twm-nav-post-a-job"
               style={{
                 padding: '12px 20px',
-                backgroundColor: '#1e45ea',
-                color: 'white',
+                backgroundColor: '#e0eeff',
+                color: '#1967d2',
+                
                 border: 'none',
                 borderRadius: '5px',
                 cursor: 'pointer',
@@ -178,7 +179,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onOpenLogin, onOpenS
                 width: '100%'
               }}
             >
-              <FiBriefcase /> Sign Up
+              <FiUserPlus  /> Sign Up
             </button>
           </>
         ) : (
@@ -189,8 +190,9 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onOpenLogin, onOpenS
               className="twm-nav-post-a-job"
               style={{
                 padding: '12px 20px',
-                backgroundColor: '#e0eeff',
-                color: '#1967d2',
+                backgroundColor: '#1e45ea',
+                color: 'white',
+                
                 border: 'none',
                 borderRadius: '5px',
                 textAlign: 'center',
@@ -213,8 +215,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onOpenLogin, onOpenS
               className="twm-nav-sign-up"
               style={{
                 padding: '12px 20px',
-                backgroundColor: '#1e45ea',
-                color: 'white',
+                backgroundColor: '#e0eeff',
+                color: '#1967d2',
                 border: 'none',
                 borderRadius: '5px',
                 cursor: 'pointer',

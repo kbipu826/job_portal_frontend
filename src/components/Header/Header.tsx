@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
-import { FiBriefcase, FiLogIn, FiMenu, FiSearch, FiLogOut } from 'react-icons/fi';
+import { FiBriefcase, FiLogIn, FiMenu, FiSearch, FiLogOut,FiUserPlus  } from 'react-icons/fi';
 import LoginModal from '../Modal/LoginModal';
 import SignUpModal from '../Modal/SignUpModal';
 import { useSession, signOut } from 'next-auth/react';
@@ -109,10 +109,10 @@ const Header = () => {
                   <div className="header-nav-btn-section">
                     {!session ? (
                       <>
-                        <div className="twm-nav-btn-left">
+                        <div className="twm-nav-btn-left ">
                           <button
                             type='button'
-                            className="custom-btn"
+                            className="custom-btn login-button"
                             onClick={openLoginModal}
                           >
                             <FiLogIn /> <span className='hidden-lg'>Log In</span>
@@ -124,7 +124,7 @@ const Header = () => {
                             className="custom-btn"
                             onClick={openSignUpModal}
                           >
-                            <FiLogIn /> <span className='hidden-lg'>Sign Up</span>
+                            <FiUserPlus /> <span className='hidden-lg'>Sign Up</span>
                           </button>
                         </div>
                       </>

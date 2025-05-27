@@ -231,3 +231,13 @@ body {
     justify-content: center !important;
   }
 }
+
+
+.login-button{
+  background-color: #1967d2 !important;
+  color: white !important;
+}
+.login-button:hover{
+  background-color: #12386c !important;
+  color: white !important;
+}
