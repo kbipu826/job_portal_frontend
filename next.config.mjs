@@ -26,13 +26,6 @@ const nextConfig = {
       },
     ];
   },
-  // Enable CSS modules
-  cssModules: true,
-  // Enable CSS imports
-  cssLoaderOptions: {
-    importLoaders: 1,
-    localIdentName: '[local]_[hash:base64:5]',
-  },
 };
 
 export default nextConfig;
