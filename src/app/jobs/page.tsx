@@ -132,7 +132,7 @@ const JobsPage = () => {
                                                 </span>
                                             </div>
                                             <div className="twm-mid-content">
-                                                <Link href={`/jobs/${job}`} className="twm-job-title">
+                                                <Link href={`/job-detail/${job}`} className="twm-job-title">
                                                     <h4>Senior Web Designer, Developer</h4>
                                                 </Link>
                                                 <p className="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
@@ -140,7 +140,7 @@ const JobsPage = () => {
                                             </div>
                                             <div className="twm-right-content">
                                                 <div className="twm-jobs-amount">$2500 <span>/ Month</span></div>
-                                                <Link href={`/jobs/${job}`} className="twm-jobs-browse site-text-primary">
+                                                <Link href={`/job-detail/${job}`} className="twm-jobs-browse site-text-primary">
                                                     Browse Job
                                                 </Link>
                                             </div>
