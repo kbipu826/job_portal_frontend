@@ -11,7 +11,7 @@ const Footer = () => {
               <div className="widget widget_about">
                 <div className="logo-footer clearfix">
                   <a href="/">
-                    <img src="images/logo-light-2.png" alt="Logo" />
+                    <img src="images/TrainingSolutionsLogo.png" alt="Logo" />
                   </a>
                 </div>
                 <br />
