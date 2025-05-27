@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { FiUser, FiMail } from 'react-icons/fi';
 
@@ -7,8 +9,10 @@ interface ApplyJobModalProps {
 }
 
 const ApplyJobModal: React.FC<ApplyJobModalProps> = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+
   return (
-    <div className="modal fade" id="apply_job_popup" style={{ display: 'none' }}>
+    <div className="modal fade show" id="apply_job_popup" style={{ display: 'block' }}>
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
