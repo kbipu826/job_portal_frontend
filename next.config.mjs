@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'job-portal-frontend-re82.vercel.app'],
   },
   webpack: (config) => {
     config.externals = [...(config.externals || []), { jquery: 'jQuery' }];

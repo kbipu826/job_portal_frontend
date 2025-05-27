@@ -5,10 +5,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FiMapPin, FiCheck } from 'react-icons/fi';
 import dynamic from 'next/dynamic';
-import ApplyJobModal from '@/components/Modals/ApplyJobModal';
 
 // Dynamically import the modal component with no SSR
-const ApplyJobModalDynamic = dynamic(() => import('@/components/Modals/ApplyJobModal'), {
+const ApplyJobModal = dynamic(() => import('@/components/Modals/ApplyJobModal'), {
   ssr: false
 });
 
@@ -328,33 +327,6 @@ export default function JobDetail() {
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
       />
-
-      {/* Add script for modal functionality */}
-      <script dangerouslySetInnerHTML={{
-        __html: `
-          document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('apply_job_popup');
-            const closeBtn = modal?.querySelector('.btn-close');
-            
-            if (closeBtn) {
-              closeBtn.addEventListener('click', function() {
-                if (modal) {
-                  modal.style.display = 'none';
-                  modal.classList.remove('show');
-                }
-              });
-            }
-
-            // Close modal when clicking outside
-            window.addEventListener('click', function(event) {
-              if (event.target === modal) {
-                modal.style.display = 'none';
-                modal.classList.remove('show');
-              }
-            });
-          });
-        `
-      }} />
     </div>
   );
 } 
