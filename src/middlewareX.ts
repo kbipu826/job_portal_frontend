@@ -9,8 +9,7 @@ const publicRoutes = [
   "/about",
   "/sign-up",
   "/contact",
-  "/jobs",
-  "/job-detail"
+  "/jobs"
 ];
 
 // Define role-specific routes
