@@ -113,6 +113,15 @@ const Header = () => {
                           <button
                             type='button'
                             className="custom-btn"
+                            onClick={openLoginModal}
+                          >
+                            <FiLogIn /> <span className='hidden-lg'>Log In</span>
+                          </button>
+                        </div>
+                        <div className="twm-nav-btn-left" style={{ marginLeft: '10px' }}>
+                          <button
+                            type='button'
+                            className="custom-btn"
                             onClick={openSignUpModal}
                           >
                             <FiLogIn /> <span className='hidden-lg'>Sign Up</span>
