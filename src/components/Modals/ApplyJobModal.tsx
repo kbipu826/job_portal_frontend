@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FiUser, FiMail } from 'react-icons/fi';
 
 interface ApplyJobModalProps {
@@ -7,10 +7,17 @@ interface ApplyJobModalProps {
 }
 
 const ApplyJobModal: React.FC<ApplyJobModalProps> = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const modal = document.getElementById('apply_job_popup');
+      if (modal) {
+        modal.style.display = isOpen ? 'block' : 'none';
+      }
+    }
+  }, [isOpen]);
 
   return (
-    <div className="modal fade show" id="apply_job_popup" style={{ display: 'block' }}>
+    <div className="modal fade" id="apply_job_popup" style={{ display: 'none' }}>
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">

@@ -1,14 +1,15 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FiMapPin, FiCheck } from 'react-icons/fi';
-import ApplyJobModal from '@/components/Modals/ApplyJobModal';
+import dynamic from 'next/dynamic';
+
+// Dynamically import the modal component with no SSR
+const ApplyJobModal = dynamic(() => import('@/components/Modals/ApplyJobModal'), {
+  ssr: false
+});
 
 export default function JobDetail() {
-  const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
-
   return (
     <div className="page-wraper">
       {/* INNER PAGE BANNER */}
@@ -91,7 +92,14 @@ export default function JobDetail() {
                           <div className="twm-job-self-bottom">
                             <button 
                               className="site-button" 
-                              onClick={() => setIsApplyModalOpen(true)}
+                              onClick={() => {
+                                if (typeof window !== 'undefined') {
+                                  const modal = document.getElementById('apply_job_popup');
+                                  if (modal) {
+                                    modal.style.display = 'block';
+                                  }
+                                }
+                              }}
                             >
                               Apply Now
                             </button>
@@ -319,8 +327,15 @@ export default function JobDetail() {
 
       {/* Apply Job Modal */}
       <ApplyJobModal 
-        isOpen={isApplyModalOpen} 
-        onClose={() => setIsApplyModalOpen(false)} 
+        isOpen={false} 
+        onClose={() => {
+          if (typeof window !== 'undefined') {
+            const modal = document.getElementById('apply_job_popup');
+            if (modal) {
+              modal.style.display = 'none';
+            }
+          }
+        }} 
       />
     </div>
   );
