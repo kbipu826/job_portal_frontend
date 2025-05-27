@@ -4,12 +4,10 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FiMapPin, FiCheck } from 'react-icons/fi';
-import dynamic from 'next/dynamic';
+import ApplyJobModal from '@/components/Modals/ApplyJobModal';
 
-// Dynamically import the modal component with no SSR
-const ApplyJobModal = dynamic(() => import('@/components/Modals/ApplyJobModal'), {
-  ssr: false
-});
+// Mark this page as static
+export const dynamic = 'force-static';
 
 export default function JobDetail() {
   const [isModalOpen, setIsModalOpen] = useState(false);
