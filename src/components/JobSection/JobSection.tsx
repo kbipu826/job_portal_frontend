@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaCalendarAlt, FaClock } from 'react-icons/fa';
+import Link from 'next/link';
 
 const JobSection: React.FC = () => {
     const jobs = [
@@ -107,9 +108,9 @@ const JobSection: React.FC = () => {
                                         </div>
 
                                         <div className="twm-mid-content">
-                                            <a href="/job-detail" className="twm-job-title">
+                                            <Link href={`/job-detail/${index + 1}`} className="twm-job-title">
                                                 <h4>{job.jobTitle}</h4>
-                                            </a>
+                                            </Link>
                                             <div className="twm-job-duration">
                                                 <ul>
                                                     <li>
@@ -134,7 +135,7 @@ const JobSection: React.FC = () => {
                                                     <div className="tot-view"><b>{job.views}<i>+</i></b></div>
                                                 </div>
                                             </div>
-                                            <a href="/job-detail" className="twm-jobs-browse site-text-primary">Apply Job</a>
+                                            <Link href={`/job-detail/${index + 1}`} className="twm-jobs-browse site-text-primary">Apply Job</Link>
                                         </div>
                                         <div className="twm-jobs-category outline">
                                             {job.categories.map((category, catIndex) => (
