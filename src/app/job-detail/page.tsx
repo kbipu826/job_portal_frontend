@@ -4,9 +4,6 @@ import Image from 'next/image';
 import { FiMapPin, FiCheck } from 'react-icons/fi';
 import JobDetailClient from './JobDetailClient';
 
-// Mark this page as static
-export const dynamic = 'force-static';
-
 export default function JobDetail() {
   return (
     <div className="page-wraper">
