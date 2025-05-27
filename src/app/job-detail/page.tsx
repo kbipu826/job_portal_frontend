@@ -93,11 +93,10 @@ export default function JobDetail() {
                             <button 
                               className="site-button" 
                               onClick={() => {
-                                if (typeof window !== 'undefined') {
-                                  const modal = document.getElementById('apply_job_popup');
-                                  if (modal) {
-                                    modal.style.display = 'block';
-                                  }
+                                const modal = document.getElementById('apply_job_popup');
+                                if (modal) {
+                                  modal.style.display = 'block';
+                                  modal.classList.add('show');
                                 }
                               }}
                             >
@@ -329,14 +328,40 @@ export default function JobDetail() {
       <ApplyJobModal 
         isOpen={false} 
         onClose={() => {
-          if (typeof window !== 'undefined') {
-            const modal = document.getElementById('apply_job_popup');
-            if (modal) {
-              modal.style.display = 'none';
-            }
+          const modal = document.getElementById('apply_job_popup');
+          if (modal) {
+            modal.style.display = 'none';
+            modal.classList.remove('show');
           }
         }} 
       />
+
+      {/* Add script for modal functionality */}
+      <script dangerouslySetInnerHTML={{
+        __html: `
+          document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('apply_job_popup');
+            const closeBtn = modal?.querySelector('.btn-close');
+            
+            if (closeBtn) {
+              closeBtn.addEventListener('click', function() {
+                if (modal) {
+                  modal.style.display = 'none';
+                  modal.classList.remove('show');
+                }
+              });
+            }
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+              if (event.target === modal) {
+                modal.style.display = 'none';
+                modal.classList.remove('show');
+              }
+            });
+          });
+        `
+      }} />
     </div>
   );
 } 
