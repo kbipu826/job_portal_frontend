@@ -43,7 +43,10 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
 
   return (
     <div className="page-wraper">
-      <header id="header-admin-wrap" className="header-admin-fixed">
+      <header 
+        id="header-admin-wrap" 
+        className={`header-admin-fixed ${isSidebarCollapsed ? 'sidebar-collapsed' : ''}`}
+      >
         <div id="header-admin">
           <div className="container">
             <div className="header-left">
