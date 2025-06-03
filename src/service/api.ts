@@ -1,14 +1,15 @@
 import axios from 'axios';
 import { getSession } from 'next-auth/react';
 
-const baseURL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+const baseURL = process.env.NEXT_PUBLIC_API_URL || 'https://job-portal-backend-1s0o.onrender.com/api';
 
 export const api = axios.create({
     baseURL,
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
-    }
+    },
+    withCredentials: true // Important for CORS with credentials
 });
 
 // Add a request interceptor to add the auth token
