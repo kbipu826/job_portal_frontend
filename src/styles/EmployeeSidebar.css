@@ -281,11 +281,21 @@
   height: 80px;
   display: flex;
   align-items: center;
+  padding: 0 20px;
 }
 
 .header-left, .header-right {
   display: flex;
   align-items: center;
+}
+
+.header-left {
+  flex: 0 0 auto;
+}
+
+.header-right {
+  flex: 1;
+  justify-content: flex-end;
 }
 
 .header-widget-wrap {
@@ -294,6 +304,160 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  gap: 20px;
+}
+
+/* Container Styles */
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Media Queries */
+@media (max-width: 991px) {
+  #header-admin-wrap {
+    left: 0;
+    width: 100%;
+  }
+
+  #header-admin-wrap.sidebar-collapsed {
+    left: 0;
+    width: 100%;
+  }
+
+  .container {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}
+
+/* Nav Button Styles */
+.nav-btn-wrap {
+  margin-right: 20px;
+}
+
+.nav-btn-admin {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn-admin:hover {
+  background: #f8f9fa;
+  transform: scale(1.05);
+}
+
+/* Dropdown Styles */
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  min-width: 200px;
+}
+
+.dropdown-item {
+  padding: 8px 15px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dropdown-item:hover {
+  background: #f8f9fa;
+}
+
+.dropdown-item i {
+  width: 20px;
+  text-align: center;
+}
+
+/* User Section Styles */
+.dashboard-user-section {
+  display: flex;
+  align-items: center;
+}
+
+.listing-user {
+  position: relative;
+}
+
+.user-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.user-name:hover {
+  background: #f8f9fa;
+}
+
+.user-name span {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-name span img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Notification Styles */
+.notification-animate {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff4d4f;
+  color: #ffffff;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.jobzilla-admin-messange,
+.jobzilla-admin-notification {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.jobzilla-admin-messange:hover,
+.jobzilla-admin-notification:hover {
+  background: #f8f9fa;
+}
+
+.jobzilla-admin-messange i,
+.jobzilla-admin-notification i {
+  font-size: 20px;
 }
 
 /* Notification Badge */
@@ -324,24 +488,6 @@
 .scrollbar-macosx::-webkit-scrollbar-thumb {
   background-color: #ccc;
   border-radius: 2px;
-}
-
-/* Dropdown Styles */
-.dropdown-menu {
-  border: none;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 10px;
-}
-
-.dropdown-item {
-  padding: 8px 15px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-
-.dropdown-item:hover {
-  background: #f8f9fa;
 }
 
 /* Button Styles */
