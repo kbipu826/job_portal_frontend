@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
 import EmployeeSidebar from './EmployeeSidebar';
@@ -11,6 +11,23 @@ interface EmployeeLayoutProps {
 const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
   const { data: session } = useSession();
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 991);
+    };
+
+    // Initial check
+    checkMobile();
+
+    // Add event listener
+    window.addEventListener('resize', checkMobile);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleLogout = () => {
     signOut();
@@ -20,21 +37,27 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
     setIsSidebarCollapsed(!isSidebarCollapsed);
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <div className="page-wraper">
       <header id="header-admin-wrap" className="header-admin-fixed">
         <div id="header-admin">
           <div className="container">
             <div className="header-left">
-              <div className="nav-btn-wrap">
-                <button 
-                  className="nav-btn-admin" 
-                  onClick={toggleSidebar}
-                  aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-                >
-                  <i className={`fa fa-angle-${isSidebarCollapsed ? 'right' : 'left'}`}></i>
-                </button>
-              </div>
+              {!isMobile && (
+                <div className="nav-btn-wrap">
+                  <button 
+                    className="nav-btn-admin" 
+                    onClick={toggleSidebar}
+                    aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+                  >
+                    <i className={`fa fa-angle-${isSidebarCollapsed ? 'right' : 'left'}`}></i>
+                  </button>
+                </div>
+              )}
             </div>
             <div className="header-right">
               <ul className="header-widget-wrap">
@@ -126,6 +149,8 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
       <EmployeeSidebar 
         isCollapsed={isSidebarCollapsed}
         onToggleCollapse={toggleSidebar}
+        isMobile={isMobile}
+        onMobileToggle={toggleMobileMenu}
       />
       
       <div id="content" className={isSidebarCollapsed ? 'sidebar-collapsed' : ''}>
