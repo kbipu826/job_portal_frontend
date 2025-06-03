@@ -27,9 +27,13 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
           <div className="container">
             <div className="header-left">
               <div className="nav-btn-wrap">
-                <a className="nav-btn-admin" id="sidebarCollapse" onClick={toggleSidebar}>
-                  <span className="fa fa-angle-left"></span>
-                </a>
+                <button 
+                  className="nav-btn-admin" 
+                  onClick={toggleSidebar}
+                  aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+                >
+                  <i className={`fa fa-angle-${isSidebarCollapsed ? 'right' : 'left'}`}></i>
+                </button>
               </div>
             </div>
             <div className="header-right">

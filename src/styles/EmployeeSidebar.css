@@ -1,13 +1,29 @@
+.page-wraper {
+  position: relative;
+  min-height: 100vh;
+}
+
+#header-admin-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 #sidebar-admin-wraper {
   position: fixed;
   left: 0;
   top: 0;
   width: 280px;
-  height: 100%;
+  height: 100vh;
   background: #fff;
   z-index: 999;
   transition: all 0.3s ease;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding-top: 80px; /* Add space for header */
 }
 
 #sidebar-admin-wraper.collapsed {
@@ -27,7 +43,7 @@
 .sidebar-collapse-btn {
   position: absolute;
   right: -12px;
-  top: 20px;
+  top: 100px; /* Adjust to be below header */
   width: 24px;
   height: 24px;
   background: #fff;
@@ -39,6 +55,7 @@
   cursor: pointer;
   z-index: 1000;
   transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar-collapse-btn:hover {
@@ -47,7 +64,7 @@
 
 #sidebar-admin-wraper .admin-nav {
   padding: 20px 0;
-  height: calc(100% - 80px);
+  height: calc(100vh - 140px); /* Adjust for header and logo */
   overflow-y: auto;
 }
 
@@ -115,9 +132,48 @@
 /* Adjust main content when sidebar is collapsed */
 #content {
   margin-left: 280px;
+  padding-top: 80px; /* Add space for header */
+  min-height: 100vh;
   transition: all 0.3s ease;
+  background: #f5f5f5;
 }
 
 #content.sidebar-collapsed {
   margin-left: 80px;
+}
+
+/* Header styles */
+#header-admin {
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-btn-admin {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.nav-btn-admin:hover {
+  background: #f5f5f5;
+}
+
+/* Ensure header content is properly aligned */
+.header-left, .header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-widget-wrap {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 } 
