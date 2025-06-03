@@ -72,7 +72,6 @@ const CandidateProfile = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      // Extract only the basic profile fields
       const basicProfileData = {
         name: formData.name,
         phone: formData.phone,
@@ -110,7 +109,6 @@ const CandidateProfile = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      // Extract only the social media fields
       const socialLinksData = {
         facebook: formData.facebook,
         twitter: formData.twitter,
@@ -454,21 +452,8 @@ const CandidateProfile = () => {
                     </div>
                   </form>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div className="section-full p-t120 p-b90 site-bg-white">
-        <div className="section-full bg-white content-inner-2">
-          <div className="container">
-            <div className="row">
-              <div className="col-xl-3 col-lg-4 m-b30">
-                <CandidateSidebar />
-              </div>
-              <div className="col-xl-9 col-lg-8 m-b30">
-                <div className="twm-right-section-panel candidate-save-job site-bg-gray">
+                <div className="twm-right-section-panel candidate-save-job site-bg-gray mt-4">
                   <form onSubmit={handleSocialSubmit}>
                     <div className="panel panel-default">
                       <div className="panel-heading wt-panel-heading p-a20">
