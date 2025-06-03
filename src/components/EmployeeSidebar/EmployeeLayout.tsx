@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
 import EmployeeSidebar from './EmployeeSidebar';
+import '@/styles/EmployeeSidebar.css';
 
 interface EmployeeLayoutProps {
   children: React.ReactNode;
@@ -9,6 +10,7 @@ interface EmployeeLayoutProps {
 
 const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
   const { data: session } = useSession();
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   const handleLogout = () => {
     signOut();
@@ -115,7 +117,7 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
 
       <EmployeeSidebar />
       
-      <div id="content">
+      <div id="content" className={isSidebarCollapsed ? 'sidebar-collapsed' : ''}>
         {children}
       </div>
 

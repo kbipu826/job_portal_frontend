@@ -1,19 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 const EmployeeSidebar = () => {
   const pathname = usePathname();
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const isActive = (path: string) => {
     return pathname === path ? 'active' : '';
   };
 
+  const toggleSidebar = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
   return (
-    <nav id="sidebar-admin-wraper">
+    <nav id="sidebar-admin-wraper" className={isCollapsed ? 'collapsed' : ''}>
       <div className="page-logo">
         <Link href="/"><img src="/images/logo-dark.png" alt="" /></Link>
       </div>
+      <button 
+        className="sidebar-collapse-btn" 
+        onClick={toggleSidebar}
+        aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+      >
+        {isCollapsed ? <FiChevronRight /> : <FiChevronLeft />}
+      </button>
       <div className="admin-nav scrollbar-macosx">
         <ul>
           <li className={isActive('/employee-dashboard')}>
