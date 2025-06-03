@@ -16,6 +16,10 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
     signOut();
   };
 
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed(!isSidebarCollapsed);
+  };
+
   return (
     <div className="page-wraper">
       <header id="header-admin-wrap" className="header-admin-fixed">
@@ -23,7 +27,7 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
           <div className="container">
             <div className="header-left">
               <div className="nav-btn-wrap">
-                <a className="nav-btn-admin" id="sidebarCollapse">
+                <a className="nav-btn-admin" id="sidebarCollapse" onClick={toggleSidebar}>
                   <span className="fa fa-angle-left"></span>
                 </a>
               </div>
@@ -115,7 +119,10 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
         </div>
       </header>
 
-      <EmployeeSidebar />
+      <EmployeeSidebar 
+        isCollapsed={isSidebarCollapsed}
+        onToggleCollapse={toggleSidebar}
+      />
       
       <div id="content" className={isSidebarCollapsed ? 'sidebar-collapsed' : ''}>
         {children}

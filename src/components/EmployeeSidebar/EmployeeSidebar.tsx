@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
-const EmployeeSidebar = () => {
+interface EmployeeSidebarProps {
+  isCollapsed: boolean;
+  onToggleCollapse: () => void;
+}
+
+const EmployeeSidebar = ({ isCollapsed, onToggleCollapse }: EmployeeSidebarProps) => {
   const pathname = usePathname();
-  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const isActive = (path: string) => {
     return pathname === path ? 'active' : '';
-  };
-
-  const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed);
   };
 
   return (
@@ -22,10 +22,10 @@ const EmployeeSidebar = () => {
       </div>
       <button 
         className="sidebar-collapse-btn" 
-        onClick={toggleSidebar}
+        onClick={onToggleCollapse}
         aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
       >
-        {isCollapsed ? <FiChevronRight /> : <FiChevronLeft />}
+        {isCollapsed ? <FiChevronRight size={20} /> : <FiChevronLeft size={20} />}
       </button>
       <div className="admin-nav scrollbar-macosx">
         <ul>
