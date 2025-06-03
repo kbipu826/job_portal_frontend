@@ -85,7 +85,6 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
                               <p>Lorem ipsum dolor sit amet, consectetur...</p>
                             </div>
                           </li>
-                          {/* Add more message items as needed */}
                         </ul>
                         <div className="message-view-all">
                           <a href="javascript:;">View All</a>
@@ -110,7 +109,6 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
                               <span className="noti-texting">Devid applied for <b>Webdesigner.</b> </span> 
                             </a>
                           </li>
-                          {/* Add more notification items as needed */}
                         </ul>
                         <div className="noti-view-all">
                           <a href="javascript:;">View All</a>
