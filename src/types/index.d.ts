@@ -53,3 +53,35 @@ export interface AuthResponse {
     };
 }
 
+// Candidate Profile Types
+export interface CandidateProfile {
+    id?: number;
+    user_id: number;
+    name: string;
+    phone: string;
+    email: string;
+    website: string;
+    qualification: string;
+    language: string;
+    job_category: string;
+    experience: string;
+    current_salary: string;
+    expected_salary: string;
+    age: string;
+    country: string;
+    city: string;
+    postcode: string;
+    address: string;
+    description: string;
+    facebook: string;
+    twitter: string;
+    linkedin: string;
+    whatsapp: string;
+    instagram: string;
+    pinterest: string;
+    tumblr: string;
+    youtube: string;
+    created_at?: string;
+    updated_at?: string;
+}
+

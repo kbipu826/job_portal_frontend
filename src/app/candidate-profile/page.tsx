@@ -1,21 +1,29 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-hot-toast';
 import CandidateSidebar from '@/components/CandidateSidebar';
+import { candidateProfileService } from '@/service/candidate/candidateProfile';
+import type { CandidateProfile } from '@/types';
 import Breadcrumb from '@/components/Breadcrumb';
 
 const CandidateProfile = () => {
-  const [formData, setFormData] = useState({
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState<Partial<CandidateProfile>>({
     name: '',
     phone: '',
     email: '',
     website: '',
     qualification: '',
     language: '',
-    jobCategory: '',
+    job_category: '',
     experience: '',
-    currentSalary: '',
-    expectedSalary: '',
+    current_salary: '',
+    expected_salary: '',
     age: '',
     country: '',
     city: '',
@@ -32,6 +40,26 @@ const CandidateProfile = () => {
     youtube: ''
   });
 
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/');
+    } else if (status === 'authenticated') {
+      fetchProfile();
+    }
+  }, [status, router]);
+
+  const fetchProfile = async () => {
+    try {
+      const response = await candidateProfileService.getProfile();
+      if (response.profile) {
+        setFormData(response.profile);
+      }
+    } catch (error) {
+      console.error('Error fetching profile:', error);
+      toast.error('Failed to load profile');
+    }
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -40,10 +68,72 @@ const CandidateProfile = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleBasicSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log(formData);
+    setLoading(true);
+    try {
+      // Extract only the basic profile fields
+      const basicProfileData = {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        website: formData.website,
+        qualification: formData.qualification,
+        language: formData.language,
+        job_category: formData.job_category,
+        experience: formData.experience,
+        current_salary: formData.current_salary,
+        expected_salary: formData.expected_salary,
+        age: formData.age,
+        country: formData.country,
+        city: formData.city,
+        postcode: formData.postcode,
+        address: formData.address,
+        description: formData.description
+      };
+
+      const response = await candidateProfileService.saveBasicProfile(basicProfileData);
+      if (response.success) {
+        toast.success('Basic profile saved successfully');
+      } else {
+        toast.error(response.message || 'Failed to save basic profile');
+      }
+    } catch (error: any) {
+      console.error('Error saving basic profile:', error);
+      toast.error(error.response?.data?.message || 'Failed to save basic profile');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSocialSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      // Extract only the social media fields
+      const socialLinksData = {
+        facebook: formData.facebook,
+        twitter: formData.twitter,
+        linkedin: formData.linkedin,
+        whatsapp: formData.whatsapp,
+        instagram: formData.instagram,
+        pinterest: formData.pinterest,
+        tumblr: formData.tumblr,
+        youtube: formData.youtube
+      };
+
+      const response = await candidateProfileService.saveSocialLinks(socialLinksData);
+      if (response.success) {
+        toast.success('Social links saved successfully');
+      } else {
+        toast.error(response.message || 'Failed to save social links');
+      }
+    } catch (error: any) {
+      console.error('Error saving social links:', error);
+      toast.error(error.response?.data?.message || 'Failed to save social links');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -76,7 +166,7 @@ const CandidateProfile = () => {
               </div>
               <div className="col-xl-9 col-lg-8 m-b30">
                 <div className="twm-right-section-panel candidate-save-job site-bg-gray">
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={handleBasicSubmit}>
                     <div className="panel panel-default">
                       <div className="panel-heading wt-panel-heading p-a20">
                         <h4 className="panel-tittle m-a0">Basic Informations</h4>
@@ -191,10 +281,10 @@ const CandidateProfile = () => {
                               <div className="ls-inputicon-box">
                                 <input
                                   className="form-control"
-                                  name="jobCategory"
+                                  name="job_category"
                                   type="text"
                                   placeholder="IT & Software"
-                                  value={formData.jobCategory}
+                                  value={formData.job_category}
                                   onChange={handleInputChange}
                                 />
                                 <i className="fs-input-icon fa fa-border-all"></i>
@@ -225,10 +315,10 @@ const CandidateProfile = () => {
                               <div className="ls-inputicon-box">
                                 <input
                                   className="form-control"
-                                  name="currentSalary"
+                                  name="current_salary"
                                   type="text"
                                   placeholder="65K"
-                                  value={formData.currentSalary}
+                                  value={formData.current_salary}
                                   onChange={handleInputChange}
                                 />
                                 <i className="fs-input-icon fa fa-dollar-sign"></i>
@@ -242,10 +332,10 @@ const CandidateProfile = () => {
                               <div className="ls-inputicon-box">
                                 <input
                                   className="form-control"
-                                  name="expectedSalary"
+                                  name="expected_salary"
                                   type="text"
                                   placeholder="75K"
-                                  value={formData.expectedSalary}
+                                  value={formData.expected_salary}
                                   onChange={handleInputChange}
                                 />
                                 <i className="fs-input-icon fa fa-dollar-sign"></i>
@@ -354,13 +444,32 @@ const CandidateProfile = () => {
 
                           <div className="col-lg-12 col-md-12">
                             <div className="text-left">
-                              <button type="submit" className="site-button">Save Changes</button>
+                              <button type="submit" className="site-button" disabled={loading}>
+                                {loading ? 'Saving...' : 'Save Changes'}
+                              </button>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div className="section-full p-t120 p-b90 site-bg-white">
+        <div className="section-full bg-white content-inner-2">
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-3 col-lg-4 m-b30">
+                <CandidateSidebar />
+              </div>
+              <div className="col-xl-9 col-lg-8 m-b30">
+                <div className="twm-right-section-panel candidate-save-job site-bg-gray">
+                  <form onSubmit={handleSocialSubmit}>
                     <div className="panel panel-default">
                       <div className="panel-heading wt-panel-heading p-a20">
                         <h4 className="panel-tittle m-a0">Social Network</h4>
@@ -505,7 +614,9 @@ const CandidateProfile = () => {
 
                           <div className="col-lg-12 col-md-12">
                             <div className="text-left">
-                              <button type="submit" className="site-button">Save Changes</button>
+                              <button type="submit" className="site-button" disabled={loading}>
+                                {loading ? 'Saving...' : 'Save Changes'}
+                              </button>
                             </div>
                           </div>
                         </div>
