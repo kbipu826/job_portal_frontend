@@ -1,7 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FiChevronLeft, FiChevronRight, FiMenu } from 'react-icons/fi';
+import { 
+  FiChevronLeft, 
+  FiChevronRight, 
+  FiMenu,
+  FiHome,
+  FiUser,
+  FiBriefcase,
+  FiUsers,
+  FiBookmark,
+  FiDollarSign,
+  FiMessageSquare,
+  FiBell,
+  FiSettings,
+  FiLock,
+  FiTrash2,
+  FiLogOut
+} from 'react-icons/fi';
 
 interface EmployeeSidebarProps {
   isCollapsed: boolean;
@@ -51,7 +67,9 @@ const EmployeeSidebar = ({ isCollapsed, onToggleCollapse, isMobile, onMobileTogg
         className={`${isCollapsed ? 'collapsed' : ''} ${isMobile ? 'mobile' : ''} ${isMobileMenuOpen ? 'mobile-open' : ''}`}
       >
         <div className="page-logo">
-          <Link href="/"><img src="/images/logo-dark.png" alt="" /></Link>
+          <Link href="/">
+            <img src="/images/logo-dark.png" alt="Jobzilla" />
+          </Link>
         </div>
         
         {/* Desktop Toggle Button */}
@@ -61,7 +79,7 @@ const EmployeeSidebar = ({ isCollapsed, onToggleCollapse, isMobile, onMobileTogg
             onClick={onToggleCollapse}
             aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
           >
-            {isCollapsed ? <FiChevronRight size={20} /> : <FiChevronLeft size={20} />}
+            {isCollapsed ? <FiChevronRight size={18} /> : <FiChevronLeft size={18} />}
           </button>
         )}
 
@@ -69,19 +87,19 @@ const EmployeeSidebar = ({ isCollapsed, onToggleCollapse, isMobile, onMobileTogg
           <ul>
             <li className={isActive('/employee-dashboard')}>
               <Link href="/employee-dashboard">
-                <i className="fa fa-home"></i>
+                <FiHome size={20} />
                 <span className="admin-nav-text">Dashboard</span>
               </Link>
             </li>
             <li className={isActive('/dash-company-profile')}>
               <Link href="/dash-company-profile">
-                <i className="fa fa-user-tie"></i>
+                <FiUser size={20} />
                 <span className="admin-nav-text">Company Profile</span>
               </Link>
             </li>
             <li className={isActive('/dash-post-job') || isActive('/dash-manage-jobs')}>
               <a href="javascript:;" onClick={() => toggleSubmenu('jobs')}>
-                <i className="fa fa-suitcase"></i>
+                <FiBriefcase size={20} />
                 <span className="admin-nav-text">Jobs</span>
               </a>
               <ul className={`sub-menu ${openSubmenu === 'jobs' ? 'active' : ''}`}>
@@ -99,25 +117,25 @@ const EmployeeSidebar = ({ isCollapsed, onToggleCollapse, isMobile, onMobileTogg
             </li>
             <li className={isActive('/dash-candidates')}>
               <Link href="/dash-candidates">
-                <i className="fa fa-user-friends"></i>
+                <FiUsers size={20} />
                 <span className="admin-nav-text">Candidates</span>
               </Link>
             </li>
             <li className={isActive('/dash-bookmark')}>
               <Link href="/dash-bookmark">
-                <i className="fa fa-bookmark"></i>
+                <FiBookmark size={20} />
                 <span className="admin-nav-text">Bookmark Resumes</span>
               </Link>
             </li>
             <li className={isActive('/dash-package')}>
               <Link href="/dash-package">
-                <i className="fa fa-money-bill-alt"></i>
+                <FiDollarSign size={20} />
                 <span className="admin-nav-text">Packages</span>
               </Link>
             </li>
             <li className={isActive('/dash-messages')}>
               <a href="javascript:;" onClick={() => toggleSubmenu('messages')}>
-                <i className="fa fa-envelope"></i>
+                <FiMessageSquare size={20} />
                 <span className="admin-nav-text">Messages <sup className="twm-msg-noti">5</sup></span>
               </a>
               <ul className={`sub-menu ${openSubmenu === 'messages' ? 'active' : ''}`}>
@@ -135,31 +153,31 @@ const EmployeeSidebar = ({ isCollapsed, onToggleCollapse, isMobile, onMobileTogg
             </li>
             <li className={isActive('/dash-resume-alert')}>
               <Link href="/dash-resume-alert">
-                <i className="fa fa-bell"></i>
+                <FiBell size={20} />
                 <span className="admin-nav-text">Resume Alerts</span>
               </Link>
             </li>
             <li className={isActive('/dash-my-profile')}>
               <Link href="/dash-my-profile">
-                <i className="fa fa-user"></i>
+                <FiSettings size={20} />
                 <span className="admin-nav-text">My Profile</span>
               </Link>
             </li>
             <li className={isActive('/dash-change-password')}>
               <Link href="/dash-change-password">
-                <i className="fa fa-fingerprint"></i>
+                <FiLock size={20} />
                 <span className="admin-nav-text">Change Password</span>
               </Link>
             </li>
             <li>
               <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#delete-dash-profile">
-                <i className="fa fa-trash-alt"></i>
+                <FiTrash2 size={20} />
                 <span className="admin-nav-text">Delete Profile</span>
               </a>
             </li>
             <li>
               <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#logout-dash-profile">
-                <i className="fa fa-share-square"></i>
+                <FiLogOut size={20} />
                 <span className="admin-nav-text">Logout</span>
               </a>
             </li>
