@@ -156,10 +156,21 @@
 #sidebar-admin-wraper .sub-menu {
   display: none;
   padding-left: 20px;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
 }
 
 #sidebar-admin-wraper .sub-menu.active {
   display: block;
+}
+
+#sidebar-admin-wraper .sub-menu li a {
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+#sidebar-admin-wraper .sub-menu li a:hover {
+  background: #e9ecef;
 }
 
 #sidebar-admin-wraper.collapsed .sub-menu {
@@ -236,4 +247,33 @@
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+/* Notification Badge */
+.twm-msg-noti {
+  background: #ff4d4f;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 10px;
+  margin-left: 5px;
+}
+
+/* Scrollbar Styles */
+.scrollbar-macosx {
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.scrollbar-macosx::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-macosx::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-macosx::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
 } 

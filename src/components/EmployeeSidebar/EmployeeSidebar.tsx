@@ -13,6 +13,7 @@ interface EmployeeSidebarProps {
 const EmployeeSidebar = ({ isCollapsed, onToggleCollapse, isMobile, onMobileToggle }: EmployeeSidebarProps) => {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
 
   const isActive = (path: string) => {
     return pathname === path ? 'active' : '';
@@ -27,6 +28,10 @@ const EmployeeSidebar = ({ isCollapsed, onToggleCollapse, isMobile, onMobileTogg
   const handleMobileToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     onMobileToggle();
+  };
+
+  const toggleSubmenu = (menuName: string) => {
+    setOpenSubmenu(openSubmenu === menuName ? null : menuName);
   };
 
   return (
@@ -75,11 +80,11 @@ const EmployeeSidebar = ({ isCollapsed, onToggleCollapse, isMobile, onMobileTogg
               </Link>
             </li>
             <li className={isActive('/dash-post-job') || isActive('/dash-manage-jobs')}>
-              <a href="javascript:;">
+              <a href="javascript:;" onClick={() => toggleSubmenu('jobs')}>
                 <i className="fa fa-suitcase"></i>
                 <span className="admin-nav-text">Jobs</span>
               </a>
-              <ul className="sub-menu">
+              <ul className={`sub-menu ${openSubmenu === 'jobs' ? 'active' : ''}`}>
                 <li>
                   <Link href="/dash-post-job">
                     <span className="admin-nav-text">Post a New Jobs</span>
@@ -111,10 +116,22 @@ const EmployeeSidebar = ({ isCollapsed, onToggleCollapse, isMobile, onMobileTogg
               </Link>
             </li>
             <li className={isActive('/dash-messages')}>
-              <Link href="/dash-messages">
+              <a href="javascript:;" onClick={() => toggleSubmenu('messages')}>
                 <i className="fa fa-envelope"></i>
                 <span className="admin-nav-text">Messages <sup className="twm-msg-noti">5</sup></span>
-              </Link>
+              </a>
+              <ul className={`sub-menu ${openSubmenu === 'messages' ? 'active' : ''}`}>
+                <li>
+                  <Link href="/dash-messages">
+                    <span className="admin-nav-text">MSG Style-1</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/dash-messages_2">
+                    <span className="admin-nav-text">MSG Style-2</span>
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li className={isActive('/dash-resume-alert')}>
               <Link href="/dash-resume-alert">
