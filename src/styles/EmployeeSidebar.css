@@ -103,7 +103,24 @@
 
 /* Desktop Toggle Button */
 .sidebar-collapse-btn {
-  display: none; /* Hide by default */
+  width: 30px;
+  height: 30px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+
+.sidebar-collapse-btn:hover {
+  background: #f8f9fa;
+  transform: scale(1.05);
 }
 
 /* Navigation Styles */
@@ -215,6 +232,16 @@
 
 /* Media Queries */
 @media (max-width: 991px) {
+  #header-admin-wrap {
+    left: 0;
+    width: 100%;
+  }
+
+  #header-admin-wrap.sidebar-collapsed {
+    left: 0;
+    width: 100%;
+  }
+
   .mobile-menu-toggle {
     display: flex;
   }
@@ -241,26 +268,6 @@
     margin-left: 0;
     width: 100%;
   }
-
-  .sidebar-collapse-btn {
-    display: flex; /* Show on mobile */
-    width: 30px;
-    height: 30px;
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin-left: 10px;
-  }
-
-  .sidebar-collapse-btn:hover {
-    background: #f8f9fa;
-    transform: scale(1.05);
-  }
 }
 
 /* Header Styles */
@@ -269,7 +276,7 @@
   top: 0;
   left: 280px;
   right: 0;
-  z-index: 1000;
+  z-index: 999;
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   width: calc(100% - 280px);
@@ -288,7 +295,17 @@
   padding: 0 20px;
 }
 
-.header-left, .header-right {
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-left .sidebar-collapse-btn {
+  margin-left: 0;
+}
+
+.header-right {
   display: flex;
   align-items: center;
 }
@@ -402,16 +419,4 @@
   z-index: 1000;
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-@media (max-width: 991px) {
-  #header-admin-wrap {
-    left: 0;
-    width: 100%;
-  }
-
-  #header-admin-wrap.sidebar-collapsed {
-    left: 0;
-    width: 100%;
-  }
 } 

@@ -3,6 +3,7 @@ import { useSession } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
 import EmployeeSidebar from './EmployeeSidebar';
 import '@/styles/EmployeeSidebar.css';
+import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 
 interface EmployeeLayoutProps {
   children: React.ReactNode;
@@ -43,23 +44,25 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
 
   return (
     <div className="page-wraper">
-      <header 
-        id="header-admin-wrap" 
-        className={`header-admin-fixed ${isSidebarCollapsed ? 'sidebar-collapsed' : ''}`}
-      >
+      <EmployeeSidebar 
+        isCollapsed={isSidebarCollapsed} 
+        onToggleCollapse={toggleSidebar}
+        isMobile={isMobile}
+        onMobileToggle={toggleMobileMenu}
+      />
+
+      <div id="header-admin-wrap" className={isSidebarCollapsed ? 'sidebar-collapsed' : ''}>
         <div id="header-admin">
           <div className="container">
             <div className="header-left">
               {!isMobile && (
-                <div className="nav-btn-wrap">
-                  <button 
-                    className="nav-btn-admin" 
-                    onClick={toggleSidebar}
-                    aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-                  >
-                    <i className={`fa fa-angle-${isSidebarCollapsed ? 'right' : 'left'}`}></i>
-                  </button>
-                </div>
+                <button 
+                  className="sidebar-collapse-btn" 
+                  onClick={toggleSidebar}
+                  aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+                >
+                  {isSidebarCollapsed ? <FiChevronRight size={18} /> : <FiChevronLeft size={18} />}
+                </button>
               )}
             </div>
             <div className="header-right">
@@ -145,15 +148,8 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
             </div>
           </div>
         </div>
-      </header>
+      </div>
 
-      <EmployeeSidebar 
-        isCollapsed={isSidebarCollapsed}
-        onToggleCollapse={toggleSidebar}
-        isMobile={isMobile}
-        onMobileToggle={toggleMobileMenu}
-      />
-      
       <div id="content" className={isSidebarCollapsed ? 'sidebar-collapsed' : ''}>
         {children}
       </div>
