@@ -18,6 +18,9 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 991);
+      if (window.innerWidth <= 991) {
+        setIsSidebarCollapsed(true);
+      }
     };
 
     // Initial check
