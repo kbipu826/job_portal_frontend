@@ -223,6 +223,7 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   background: #f5f5f5;
   width: calc(100% - 280px);
+  margin-top: 80px;
 }
 
 #content.sidebar-collapsed {
@@ -295,6 +296,14 @@
   padding: 0 20px;
 }
 
+#header-admin .container {
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .header-left {
   display: flex;
   align-items: center;
@@ -316,15 +325,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-/* Container for header content */
-#header-admin .container {
-  width: 100%;
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 20px;
 }
 
 /* Notification Badge */
