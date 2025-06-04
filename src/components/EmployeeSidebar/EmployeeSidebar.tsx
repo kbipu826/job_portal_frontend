@@ -70,7 +70,7 @@ const EmployeeSidebar = ({ isCollapsed, onToggleCollapse, isMobile, onMobileTogg
           <Link href="/">
             <img src="/images/logo-dark.png" alt="Jobzilla" />
           </Link>
-          {!isMobile && (
+          {isMobile && (
             <button 
               className="sidebar-collapse-btn" 
               onClick={onToggleCollapse}

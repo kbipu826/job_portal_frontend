@@ -191,7 +191,7 @@ const Dashboard = () => {
                             <div className="twm-media">
                               <div className="twm-media-pic">
                               <img src="/images/candidates/pic1.jpg" alt="#" />
-                            </div>
+                              </div>
                             </div>
                             <div className="twm-mid-content">
                               <a href="#" className="twm-job-title">
