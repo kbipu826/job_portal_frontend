@@ -70,19 +70,17 @@ const EmployeeSidebar = ({ isCollapsed, onToggleCollapse, isMobile, onMobileTogg
           <Link href="/">
             <img src="/images/logo-dark.png" alt="Jobzilla" />
           </Link>
+          {!isMobile && (
+            <button 
+              className="sidebar-collapse-btn" 
+              onClick={onToggleCollapse}
+              aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+            >
+              {isCollapsed ? <FiChevronRight size={18} /> : <FiChevronLeft size={18} />}
+            </button>
+          )}
         </div>
         
-        {/* Desktop Toggle Button */}
-        {!isMobile && (
-          <button 
-            className="sidebar-collapse-btn" 
-            onClick={onToggleCollapse}
-            aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-          >
-            {isCollapsed ? <FiChevronRight size={18} /> : <FiChevronLeft size={18} />}
-          </button>
-        )}
-
         <div className="admin-nav scrollbar-macosx">
           <ul>
             <li className={isActive('/employee-dashboard')}>
