@@ -1,26 +1,16 @@
 'use client';
 import React, { useState } from 'react';
 import EmployeeLayout from '@/components/EmployeeSidebar/EmployeeLayout';
-import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
+import EmployeeHeader from '@/components/EmployeeSidebar/EmployeeHeader';
 
 const Dashboard = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
-  const toggleSidebar = () => {
-    setIsSidebarCollapsed(!isSidebarCollapsed);
-  };
-
   return (
     <EmployeeLayout>
+      <EmployeeHeader isSidebarCollapsed={isSidebarCollapsed} />
       <div className="dashboard-content">
         <div className="dashboard-header">
-          <button 
-            className="sidebar-collapse-btn" 
-            onClick={toggleSidebar}
-            aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-          >
-            {isSidebarCollapsed ? <FiChevronRight size={18} /> : <FiChevronLeft size={18} />}
-          </button>
           <h1>Dashboard</h1>
         </div>
         

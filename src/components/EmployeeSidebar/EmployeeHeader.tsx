@@ -17,9 +17,6 @@ const EmployeeHeader = ({ isSidebarCollapsed }: EmployeeHeaderProps) => {
     <div id="header-admin-wrap" className={isSidebarCollapsed ? 'sidebar-collapsed' : ''}>
       <div id="header-admin">
         <div className="container">
-          <div className="header-left">
-            {/* Toggle button removed */}
-          </div>
           <div className="header-right">
             <ul className="header-widget-wrap">
               <li className="header-widget dashboard-message-dropdown">
