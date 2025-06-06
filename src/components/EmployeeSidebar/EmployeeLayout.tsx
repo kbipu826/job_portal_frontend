@@ -60,8 +60,6 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
 
       <EmployeeHeader 
         isSidebarCollapsed={isSidebarCollapsed}
-        onToggleSidebar={toggleSidebar}
-        isMobile={isMobile}
       />
 
       <div id="content" className={isSidebarCollapsed ? 'sidebar-collapsed' : ''}>

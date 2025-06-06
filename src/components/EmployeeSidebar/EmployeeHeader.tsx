@@ -1,15 +1,12 @@
 import React from 'react';
 import { useSession } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
-import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 
 interface EmployeeHeaderProps {
   isSidebarCollapsed: boolean;
-  onToggleSidebar: () => void;
-  isMobile: boolean;
 }
 
-const EmployeeHeader = ({ isSidebarCollapsed, onToggleSidebar, isMobile }: EmployeeHeaderProps) => {
+const EmployeeHeader = ({ isSidebarCollapsed }: EmployeeHeaderProps) => {
   const { data: session } = useSession();
 
   const handleLogout = () => {
@@ -21,15 +18,7 @@ const EmployeeHeader = ({ isSidebarCollapsed, onToggleSidebar, isMobile }: Emplo
       <div id="header-admin">
         <div className="container">
           <div className="header-left">
-            {!isMobile && (
-              <button 
-                className="sidebar-collapse-btn" 
-                onClick={onToggleSidebar}
-                aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
-              >
-                {isSidebarCollapsed ? <FiChevronRight size={18} /> : <FiChevronLeft size={18} />}
-              </button>
-            )}
+            {/* Toggle button removed */}
           </div>
           <div className="header-right">
             <ul className="header-widget-wrap">

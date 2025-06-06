@@ -1,10 +1,29 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import EmployeeLayout from '@/components/EmployeeSidebar/EmployeeLayout';
+import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 
 const Dashboard = () => {
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed(!isSidebarCollapsed);
+  };
+
   return (
     <EmployeeLayout>
+      <div className="dashboard-content">
+        <div className="dashboard-header">
+          <button 
+            className="sidebar-collapse-btn" 
+            onClick={toggleSidebar}
+            aria-label={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          >
+            {isSidebarCollapsed ? <FiChevronRight size={18} /> : <FiChevronLeft size={18} />}
+          </button>
+          <h1>Dashboard</h1>
+        </div>
+        
         <div className="content-admin-main">
           <div className="wt-admin-right-page-header clearfix">
             <h2>Hello, Nikola Tesla</h2>
@@ -86,28 +105,28 @@ const Dashboard = () => {
                   <div className="panel-body wt-panel-body bg-white">
                     <div className="dashboard-messages-box-scroll scrollbar-macosx">
                       <div className="dashboard-messages-box">
-                      <div className="dashboard-message-avtar"><img src="/images/user-avtar/pic1.jpg" alt="" /></div>
+                        <div className="dashboard-message-avtar"><img src="/images/user-avtar/pic1.jpg" alt="" /></div>
                         <div className="dashboard-message-area">
                           <h5>Lucy Smith<span>18 June 2023</span></h5>
                           <p>Bring to the table win-win survival strategies to ensure proactive domination. at the end of the day, going forward, a new normal that has evolved from generation.</p>
                         </div>
                       </div>
                       <div className="dashboard-messages-box">
-                      <div className="dashboard-message-avtar"><img src="/images/user-avtar/pic3.jpg" alt="" /></div>
+                        <div className="dashboard-message-avtar"><img src="/images/user-avtar/pic3.jpg" alt="" /></div>
                         <div className="dashboard-message-area">
                           <h5>Richred paul<span>19 June 2023</span></h5>
                           <p>Bring to the table win-win survival strategies to ensure proactive domination. at the end of the day, going forward, a new normal that has evolved from generation.</p>
                         </div>
                       </div>
                       <div className="dashboard-messages-box">
-                      <div className="dashboard-message-avtar"><img src="/images/user-avtar/pic4.jpg" alt="" /></div>
+                        <div className="dashboard-message-avtar"><img src="/images/user-avtar/pic4.jpg" alt="" /></div>
                         <div className="dashboard-message-area">
                           <h5>Jon Doe<span>20 June 2023</span></h5>
                           <p>Bring to the table win-win survival strategies to ensure proactive domination. at the end of the day, going forward, a new normal that has evolved from generation.</p>
                         </div>
                       </div>
                       <div className="dashboard-messages-box">
-                      <div className="dashboard-message-avtar"><img src="/images/user-avtar/pic1.jpg" alt="" /></div>
+                        <div className="dashboard-message-avtar"><img src="/images/user-avtar/pic1.jpg" alt="" /></div>
                         <div className="dashboard-message-area">
                           <h5>Thomas Smith<span>22 June 2023</span></h5>
                           <p>Bring to the table win-win survival strategies to ensure proactive domination. at the end of the day, going forward, a new normal that has evolved from generation. </p>
@@ -190,7 +209,7 @@ const Dashboard = () => {
                           <div className="twm-dash-candidates-list">
                             <div className="twm-media">
                               <div className="twm-media-pic">
-                              <img src="/images/candidates/pic1.jpg" alt="#" />
+                                <img src="/images/candidates/pic1.jpg" alt="#" />
                               </div>
                             </div>
                             <div className="twm-mid-content">
@@ -226,7 +245,7 @@ const Dashboard = () => {
                             </div>
                           </div>
                         </div>
-                      {/* Add more candidate items as needed */}
+                      </div>
                     </div>
                   </div>
                 </div>
