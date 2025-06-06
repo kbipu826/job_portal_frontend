@@ -17,8 +17,9 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 991);
-      if (window.innerWidth <= 991) {
+      const isMobileView = window.innerWidth <= 991;
+      setIsMobile(isMobileView);
+      if (isMobileView) {
         setIsSidebarCollapsed(true);
       }
     };
@@ -38,7 +39,9 @@ const EmployeeLayout = ({ children }: EmployeeLayoutProps) => {
   };
 
   const toggleSidebar = () => {
-    setIsSidebarCollapsed(!isSidebarCollapsed);
+    if (!isMobile) {
+      setIsSidebarCollapsed(!isSidebarCollapsed);
+    }
   };
 
   const toggleMobileMenu = () => {
